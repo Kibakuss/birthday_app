@@ -1,4 +1,4 @@
-import 'package:birthday_app/ol.dart';
+import 'package:birthday_app/map.dart';
 import 'package:birthday_app/utils/colors.dart';
 import 'package:birthday_app/utils/styles.dart';
 import 'package:flutter/material.dart';
@@ -352,6 +352,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     'Место',
                     style: Styles.headStyle,
                   ),
+                  MapScreen(),
                 ],
               ),
             ),
