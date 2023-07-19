@@ -1,8 +1,11 @@
+import 'package:birthday_app/ol.dart';
+import 'package:birthday_app/utils/colors.dart';
+import 'package:birthday_app/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -26,159 +29,353 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
   @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  final PageController _pageController = PageController(initialPage: 0);
+
+  // the index of the current page
+  int _activePage = 0;
+  bool _expanded = true;
+  bool _expandedGames = true;
+  final List<MenuItem> menu = [
+    MenuItem(imageName: '1', title: 'Канапе'),
+    MenuItem(imageName: '2', title: 'Сырная тарелка'),
+    MenuItem(imageName: '3', title: 'Шашлык на мангале'),
+    MenuItem(imageName: '4', title: 'Морепродукты'),
+    MenuItem(imageName: '5', title: 'Свежие фрукты'),
+    MenuItem(imageName: '6', title: 'Авторские лимонады'),
+  ];
+
+  final List<GameItem> games = [
+    GameItem(
+        imageName: 'table_games',
+        title: 'Настольные игры',
+        description: 'Мафия, уно, домино, экивоки и другие'),
+    GameItem(
+        imageName: 'pool',
+        title: 'Бассейн',
+        description: 'Два бассейна с подогревом'),
+    GameItem(
+        imageName: 'pool',
+        title: 'Баня',
+        description: 'Русская баня на дровах'),
+    GameItem(
+        imageName: 'pool',
+        title: 'Бильярд',
+        description: 'Бильярдный стол в отлеьной команте'),
+  ];
+
+  final List<Widget> _pages = [
+    Stack(
+      fit: StackFit.expand,
+      children: [
+        Image.asset(
+          'assets/images/home.png',
+          filterQuality: FilterQuality.high,
+          fit: BoxFit.fill,
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 15.h, left: 15.w),
+          child: Text(
+            '25 августа\n 2023',
+            style: Styles.headImageStyle,
+          ),
+        )
+      ],
+    ),
+    Image.asset(
+      'assets/images/1.png',
+      filterQuality: FilterQuality.high,
+      fit: BoxFit.fill,
+    ),
+    Image.asset(
+      'assets/images/2.png',
+      filterQuality: FilterQuality.high,
+      fit: BoxFit.fill,
+    ),
+  ];
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
-        body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Image.asset('assets/images/home.png'),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.w),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 16,
+        body: SafeArea(
+      left: false,
+      right: false,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(
+              height: 250.h,
+              child: Stack(
+                children: [
+                  // the page view
+                  PageView.builder(
+                    controller: _pageController,
+                    onPageChanged: (int page) {
+                      setState(() {
+                        _activePage = page;
+                      });
+                    },
+                    itemCount: _pages.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return _pages[index % _pages.length];
+                    },
+                  ),
+                  // Display the dots indicator
+                  Positioned(
+                    bottom: 11.h,
+                    left: 0,
+                    right: 0,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List<Widget>.generate(
+                          _pages.length,
+                          (index) => Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 7),
+                                child: InkWell(
+                                  onTap: () {
+                                    _pageController.animateToPage(index,
+                                        duration:
+                                            const Duration(milliseconds: 300),
+                                        curve: Curves.easeIn);
+                                  },
+                                  child: AnimatedContainer(
+                                    duration: const Duration(milliseconds: 300),
+                                    height: 5.h,
+                                    width: _activePage == index ? 30.w : 5.w,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius:
+                                            BorderRadius.circular(39.r)),
+                                  ),
+                                ),
+                              )),
                     ),
-                    Text(
-                      'Приглашаю своих дорогих друзей отметить мой день рождения в замечательном месте с множеством развлечений, вкусных блюд и хорошим настроением!',
-                    ),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: SizedBox(
-                            height: 50.h,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15)),
-                                // disabledForegroundColor: Color(0xFFFDAC07),
-                                disabledBackgroundColor: Color(0xFFFDAC07),
-                                backgroundColor: Color(0xFFFDAC07),
-                                // foregroundColor: Colors.amber,
-                                // elevation: 20, // Elevation
-                                // shadowColor: Colors.amber, // Shadow Color
-                              ),
-                              onPressed: () {},
-                              child: Text(
-                                'Список гостей',
-                                style: TextStyle(color: Colors.white),
-                              ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 16.h,
+                  ),
+                  const Text(
+                    'Приглашаю своих дорогих друзей отметить мой день рождения в замечательном месте с множеством развлечений, вкусных блюд и хорошим настроением!',
+                    style: Styles.mainStyle,
+                  ),
+                  SizedBox(
+                    height: 16.h,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: SizedBox(
+                          height: 50.h,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15)),
+                              // disabledForegroundColor: Color(0xFFFDAC07),
+                              disabledBackgroundColor: Color(0xFFFDAC07),
+                              backgroundColor: Color(0xFFFDAC07),
+                              // foregroundColor: Colors.amber,
+                              // elevation: 20, // Elevation
+                              // shadowColor: Colors.amber, // Shadow Color
+                            ),
+                            onPressed: () {},
+                            child: const Center(
+                              child: Text('Список гостей',
+                                  maxLines: 1, style: Styles.buttonStyle),
                             ),
                           ),
                         ),
-                        SizedBox(
-                          width: 31.w,
-                        ),
-                        Expanded(
-                          child: SizedBox(
-                            height: 50.h,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15)),
-                                // disabledForegroundColor: Color(0xFFFDAC07),
-                                disabledBackgroundColor: Color(0xFFFDAC07),
-                                backgroundColor: Color(0xFFFDAC07),
-                                // foregroundColor: Colors.amber,
-                                // elevation: 20, // Elevation
-                                // shadowColor: Colors.amber, // Shadow Color
-                              ),
-                              onPressed: () {},
-                              child: Text(
-                                'Вишлист',
-                                style: TextStyle(color: Colors.white),
-                              ),
+                      ),
+                      SizedBox(
+                        width: 31.w,
+                      ),
+                      Expanded(
+                        child: SizedBox(
+                          height: 50.h,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15)),
+                              // disabledForegroundColor: Color(0xFFFDAC07),
+                              disabledBackgroundColor: Color(0xFFFDAC07),
+                              backgroundColor: Color(0xFFFDAC07),
+                              // foregroundColor: Colors.amber,
+                              // elevation: 20, // Elevation
+                              // shadowColor: Colors.amber, // Shadow Color
+                            ),
+                            onPressed: () {},
+                            child: Text(
+                              'Вишлист',
+                              style: Styles.buttonStyle,
                             ),
                           ),
                         ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 30.h,
-                    ),
-                    Text('Меню'),
-                    SizedBox(
-                      height: 16.h,
-                    ),
-                    Wrap(
-                      spacing: 31.w, // gap between adjacent chips
-                      runSpacing: 16.h, // gap between lines
-                      children: <Widget>[
-                        Column(
-                          children: [
-                            Image.asset('assets/images/1.png'),
-                            Text('Канапе')
-                          ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 30.h,
+                  ),
+                  Text(
+                    'Меню',
+                    style: Styles.headStyle,
+                  ),
+                  SizedBox(
+                    height: 16.h,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16.w),
+                    child: Container(
+                      height: _expanded ? 500.h : 150.h,
+                      child: GridView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          mainAxisExtent: 154.h,
+                          mainAxisSpacing: 16.h,
+                          crossAxisSpacing: 32.w,
+                          crossAxisCount: 2,
+                          // childAspectRatio: 0.5,
                         ),
-                        Column(
-                          children: [
-                            Image.asset('assets/images/2.png'),
-                            Text('Сырная тарелка')
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Image.asset('assets/images/3.png'),
-                            Text('Шашлык на мангале')
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Image.asset('assets/images/4.png'),
-                            Text('Моорепродукты')
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Image.asset('assets/images/5.png'),
-                            Text('Свежие фрукты')
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Image.asset('assets/images/6.png'),
-                            Text('Авторские лимонады')
-                          ],
-                        ),
-                      ],
+                        itemCount: _expanded ? menu.length : 2,
+                        itemBuilder: (context, index) {
+                          final item = menu[index];
+                          return GestureDetector(
+                            onTap: () {},
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  // width: double.infinity,
+                                  child: Image.asset(
+                                    'assets/images/${item.imageName}.png',
+                                    // width: 140.w,
+                                    // height: 140.h,
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                                Text(
+                                  item.title,
+                                  style: Styles.mainStyle,
+                                  maxLines: 1,
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                      ),
                     ),
-                    SizedBox(
-                      height: 12.h,
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      setState(() {
+                        _expanded = !_expanded;
+                      });
+                    },
+                    child: Text(
+                      _expanded ? 'Свернуть \u{25B2}' : 'Развернуть \u{25BC}',
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          decoration: TextDecoration.underline,
+                          color: AppColors.titleColor),
                     ),
-                    Text('Свернуть'),
-                    SizedBox(
-                      height: 30.h,
-                    ),
-                    Text('Развлечения'),
-                    SizedBox(
-                      height: 16.h,
-                    ),
-                    Card(
-                      child: ListTile(
-                        leading: Image.asset('assets/images/table_games.png'),
-                        title: Text('Настольные игры'),
+                  ),
+                  SizedBox(
+                    height: 30.h,
+                  ),
+                  Text(
+                    'Развлечения',
+                    style: Styles.headStyle,
+                  ),
+                  SizedBox(
+                    height: 16.h,
+                  ),
+                  ListView.builder(
+                    itemCount: _expandedGames ? games.length : 2,
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      final item = games[index];
+                      return ListTile(
+                        contentPadding: EdgeInsets.all(0),
+                        leading:
+                            Image.asset('assets/images/${item.imageName}.png'),
+                        title: Text(
+                          item.title,
+                          style: Styles.mainStyle,
+                        ),
                         subtitle: Text(
-                          'Мафия, уно, домино, экивоки и другие',
+                          item.description,
                           maxLines: 1,
+                          style: Styles.descriptionStyle,
                         ),
                         trailing: Icon(Icons.arrow_forward_ios_sharp),
                         isThreeLine: false,
-                      ),
+                      );
+                    },
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _expandedGames = !_expandedGames;
+                      });
+                    },
+                    child: Text(
+                      _expandedGames
+                          ? 'Свернуть \u{25B2}'
+                          : 'Развернуть \u{25BC}',
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          decoration: TextDecoration.underline,
+                          color: AppColors.titleColor),
                     ),
-                  ],
-                ),
+                  ),
+                  SizedBox(
+                    height: 30.h,
+                  ),
+                  Text(
+                    'Место',
+                    style: Styles.headStyle,
+                  ),
+                ],
               ),
-            ],
-          ),
-        ));
+            ),
+          ],
+        ),
+      ),
+    ));
   }
+}
+
+class MenuItem {
+  final String imageName;
+  final String title;
+
+  MenuItem({required this.imageName, required this.title});
+}
+
+class GameItem {
+  final String imageName;
+  final String title;
+  final String description;
+
+  GameItem(
+      {required this.imageName,
+      required this.title,
+      required this.description});
 }
