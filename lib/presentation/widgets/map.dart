@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
-class MapScreen extends StatefulWidget {
-  const MapScreen({Key? key}) : super(key: key);
+class MapWindow extends StatefulWidget {
+  const MapWindow({Key? key}) : super(key: key);
 
   @override
-  State<MapScreen> createState() => _MapScreenState();
+  State<MapWindow> createState() => _MapWindowState();
 }
 
-class _MapScreenState extends State<MapScreen> {
+class _MapWindowState extends State<MapWindow> {
   final mapControllerCompleter = Completer<YandexMapController>();
 
   @override
@@ -30,21 +30,15 @@ class _MapScreenState extends State<MapScreen> {
         mapObjects: [
           PlacemarkMapObject(
               text: const PlacemarkText(
-                  text: 'Радуга', style: PlacemarkTextStyle()),
+                  text: 'Радуга',
+                  style:
+                      PlacemarkTextStyle(placement: TextStylePlacement.right)),
               mapId: const MapObjectId('polygon'),
               point: const Point(latitude: 47.243347, longitude: 38.702288),
               icon: PlacemarkIcon.single(PlacemarkIconStyle(
                   zIndex: 4,
                   image: BitmapDescriptor.fromAssetImage(
                       'assets/images/route_start.png')))),
-          // MapObject(
-          //   // Координаты метки
-          //   point: Point(latitude: 47.243347, longitude: 38.702288),
-
-          //   // Иконка метки
-          //   icon: PlacemarkIcon.single(
-          //       PlacemarkIconStyle(image: AssetImage('assets/marker.png'))),
-          // ),
         ],
         onMapCreated: (controller) {
           mapControllerCompleter.complete(controller);
@@ -91,58 +85,3 @@ class _MapScreenState extends State<MapScreen> {
     );
   }
 }
-
-// class MapPage extends StatefulWidget {
-//   @override
-//   _MapPageState createState() => _MapPageState();
-// }
-
-// class _MapPageState extends State<MapPage> {
-//   final _mapController = MapController();
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: YandexMap(
-//         onMapCreated: (YandexMapController yandexMapController) async {
-//           _mapController.complete(yandexMapController);
-//         },
-//         mapObjects: [
-//           MapObject(
-//             point: Point(
-//               latitude: 47.243347,
-//               longitude: 38.702288,
-//             ),
-//             icon: PlacemarkIcon.single(
-//               PlacemarkIconStyle(
-//                 image: AssetImage('assets/marker.png'),
-//               ),
-//             ),
-//           )
-//         ],
-//       ),
-//       floatingActionButton: Column(
-//         mainAxisAlignment: MainAxisAlignment.end,
-//         children: [
-//           FloatingActionButton(
-//             child: Icon(Icons.zoom_out),
-//             onPressed: () {
-//               _mapController.future.then((controller) {
-//                 controller.moveCamera(CameraUpdate.zoomOut());
-//               });
-//             },
-//           ),
-//           SizedBox(height: 8),
-//           FloatingActionButton(
-//             child: Icon(Icons.zoom_in),
-//             onPressed: () {
-//               _mapController.future.then((controller) {
-//                 controller.moveCamera(CameraUpdate.zoomIn());
-//               });
-//             },
-//           )
-//         ],
-//       ),
-//     );
-//   }
-// }
