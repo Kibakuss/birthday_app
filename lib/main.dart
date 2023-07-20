@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -18,7 +18,6 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       child: MaterialApp(
-        title: 'Flutter Demo',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
@@ -44,29 +43,29 @@ class _MyHomePageState extends State<MyHomePage> {
   bool _expanded = true;
   bool _expandedGames = true;
   final List<MenuItem> menu = [
-    MenuItem(imageName: '1', title: 'Канапе'),
-    MenuItem(imageName: '2', title: 'Сырная тарелка'),
-    MenuItem(imageName: '3', title: 'Шашлык на мангале'),
-    MenuItem(imageName: '4', title: 'Морепродукты'),
-    MenuItem(imageName: '5', title: 'Свежие фрукты'),
-    MenuItem(imageName: '6', title: 'Авторские лимонады'),
+    MenuItem(imageName: '1.jpg', title: 'Канапе'),
+    MenuItem(imageName: '2.png', title: 'Сырная тарелка'),
+    MenuItem(imageName: '3.jpg', title: 'Шашлык на мангале'),
+    MenuItem(imageName: '4.webp', title: 'Морепродукты'),
+    MenuItem(imageName: '5.jpeg', title: 'Свежие фрукты'),
+    MenuItem(imageName: '6.jpg', title: 'Авторские лимонады'),
   ];
 
   final List<GameItem> games = [
     GameItem(
-        imageName: 'table_games',
+        imageName: 'table_games.png',
         title: 'Настольные игры',
         description: 'Мафия, уно, домино, экивоки и другие'),
     GameItem(
-        imageName: 'pool',
+        imageName: 'pool.png',
         title: 'Бассейн',
         description: 'Два бассейна с подогревом'),
     GameItem(
-        imageName: 'pool',
+        imageName: 'pool.png',
         title: 'Баня',
         description: 'Русская баня на дровах'),
     GameItem(
-        imageName: 'pool',
+        imageName: 'pool.png',
         title: 'Бильярд',
         description: 'Бильярдный стол в отлеьной команте'),
   ];
@@ -81,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
           fit: BoxFit.fill,
         ),
         Padding(
-          padding: EdgeInsets.only(top: 15.h, left: 15.w),
+          padding: EdgeInsets.only(top: 15.w, left: 15.w),
           child: Text(
             '25 августа\n 2023',
             style: Styles.headImageStyle,
@@ -90,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ],
     ),
     Image.asset(
-      'assets/images/1.png',
+      'assets/images/1.jpg',
       filterQuality: FilterQuality.high,
       fit: BoxFit.fill,
     ),
@@ -137,8 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: List<Widget>.generate(
                           _pages.length,
                           (index) => Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 7),
+                                padding: EdgeInsets.symmetric(horizontal: 7.w),
                                 child: InkWell(
                                   onTap: () {
                                     _pageController.animateToPage(index,
@@ -169,7 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   SizedBox(
                     height: 16.h,
                   ),
-                  const Text(
+                  Text(
                     'Приглашаю своих дорогих друзей отметить мой день рождения в замечательном месте с множеством развлечений, вкусных блюд и хорошим настроением!',
                     style: Styles.mainStyle,
                   ),
@@ -177,51 +175,47 @@ class _MyHomePageState extends State<MyHomePage> {
                     height: 16.h,
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Expanded(
-                        child: SizedBox(
-                          height: 50.h,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15)),
-                              // disabledForegroundColor: Color(0xFFFDAC07),
-                              disabledBackgroundColor: Color(0xFFFDAC07),
-                              backgroundColor: Color(0xFFFDAC07),
-                              // foregroundColor: Colors.amber,
-                              // elevation: 20, // Elevation
-                              // shadowColor: Colors.amber, // Shadow Color
-                            ),
-                            onPressed: () {},
-                            child: const Center(
-                              child: Text('Список гостей',
-                                  maxLines: 1, style: Styles.buttonStyle),
-                            ),
+                      SizedBox(
+                        height: 50.h,
+                        width: 156.w,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.r)),
+                            // disabledForegroundColor: Color(0xFFFDAC07),
+                            disabledBackgroundColor: const Color(0xFFFDAC07),
+                            backgroundColor: const Color(0xFFFDAC07),
+                            // foregroundColor: Colors.amber,
+                            // elevation: 20, // Elevation
+                            // shadowColor: Colors.amber, // Shadow Color
+                          ),
+                          onPressed: () {},
+                          child: Center(
+                            child: Text('Список гостей',
+                                maxLines: 1, style: Styles.buttonStyle),
                           ),
                         ),
                       ),
                       SizedBox(
-                        width: 31.w,
-                      ),
-                      Expanded(
-                        child: SizedBox(
-                          height: 50.h,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15)),
-                              // disabledForegroundColor: Color(0xFFFDAC07),
-                              disabledBackgroundColor: Color(0xFFFDAC07),
-                              backgroundColor: Color(0xFFFDAC07),
-                              // foregroundColor: Colors.amber,
-                              // elevation: 20, // Elevation
-                              // shadowColor: Colors.amber, // Shadow Color
-                            ),
-                            onPressed: () {},
-                            child: Text(
-                              'Вишлист',
-                              style: Styles.buttonStyle,
-                            ),
+                        width: 156.w,
+                        height: 50.h,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.r)),
+                            // disabledForegroundColor: Color(0xFFFDAC07),
+                            disabledBackgroundColor: const Color(0xFFFDAC07),
+                            backgroundColor: const Color(0xFFFDAC07),
+                            // foregroundColor: Colors.amber,
+                            // elevation: 20, // Elevation
+                            // shadowColor: Colors.amber, // Shadow Color
+                          ),
+                          onPressed: () {},
+                          child: Text(
+                            'Вишлист',
+                            style: Styles.buttonStyle,
                           ),
                         ),
                       ),
@@ -239,12 +233,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16.w),
-                    child: Container(
-                      height: _expanded ? 500.h : 150.h,
+                    child: SizedBox(
+                      height: _expanded ? 510.h : 160.h,
                       child: GridView.builder(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          mainAxisExtent: 154.h,
+                          mainAxisExtent: 161.h,
                           mainAxisSpacing: 16.h,
                           crossAxisSpacing: 32.w,
                           crossAxisCount: 2,
@@ -258,13 +252,18 @@ class _MyHomePageState extends State<MyHomePage> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Container(
-                                  // width: double.infinity,
-                                  child: Image.asset(
-                                    'assets/images/${item.imageName}.png',
-                                    // width: 140.w,
-                                    // height: 140.h,
-                                    fit: BoxFit.fill,
+                                ClipRRect(
+                                  borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(25.r),
+                                    bottomLeft: Radius.circular(25.r),
+                                  ),
+                                  child: SizedBox(
+                                    width: 140.w,
+                                    height: 140.w,
+                                    child: Image.asset(
+                                      'assets/images/${item.imageName}',
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
                                 Text(
@@ -288,7 +287,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Text(
                       _expanded ? 'Свернуть \u{25B2}' : 'Развернуть \u{25BC}',
                       style: TextStyle(
-                          fontSize: 14,
+                          fontFamily: 'Jost',
+                          fontSize: 14.sp,
                           fontWeight: FontWeight.w400,
                           decoration: TextDecoration.underline,
                           color: AppColors.titleColor),
@@ -306,14 +306,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   ListView.builder(
                     itemCount: _expandedGames ? games.length : 2,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       final item = games[index];
                       return ListTile(
-                        contentPadding: EdgeInsets.all(0),
-                        leading:
-                            Image.asset('assets/images/${item.imageName}.png'),
+                        contentPadding: const EdgeInsets.all(0),
+                        leading: Image.asset('assets/images/${item.imageName}'),
                         title: Text(
                           item.title,
                           style: Styles.mainStyle,
@@ -323,7 +322,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           maxLines: 1,
                           style: Styles.descriptionStyle,
                         ),
-                        trailing: Icon(Icons.arrow_forward_ios_sharp),
+                        trailing: const Icon(Icons.arrow_forward_ios_sharp),
                         isThreeLine: false,
                       );
                     },
@@ -339,7 +338,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           ? 'Свернуть \u{25B2}'
                           : 'Развернуть \u{25BC}',
                       style: TextStyle(
-                          fontSize: 14,
+                          fontFamily: 'Jost',
+                          fontSize: 14.sp,
                           fontWeight: FontWeight.w400,
                           decoration: TextDecoration.underline,
                           color: AppColors.titleColor),
@@ -352,7 +352,17 @@ class _MyHomePageState extends State<MyHomePage> {
                     'Место',
                     style: Styles.headStyle,
                   ),
-                  MapScreen(),
+                  SizedBox(
+                    height: 16.h,
+                  ),
+                  const MapScreen(),
+                  SizedBox(
+                    height: 4.h,
+                  ),
+                  Text(
+                    'Адрес',
+                    style: Styles.mainStyle,
+                  )
                 ],
               ),
             ),

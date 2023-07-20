@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 // class SliderIndicator extends StatelessWidget {
 //   const SliderIndicator({super.key, required this.length, required this.index});
@@ -31,7 +30,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 //   }
 // }
 
-import 'package:flutter/material.dart';
+
 
 // void main() => runApp(MyApp());
 

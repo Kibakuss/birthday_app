@@ -29,9 +29,10 @@ class _MapScreenState extends State<MapScreen> {
       child: YandexMap(
         mapObjects: [
           PlacemarkMapObject(
-              text: PlacemarkText(text: 'Радуга', style: PlacemarkTextStyle()),
-              mapId: MapObjectId('polygon'),
-              point: Point(latitude: 47.243347, longitude: 38.702288),
+              text: const PlacemarkText(
+                  text: 'Радуга', style: PlacemarkTextStyle()),
+              mapId: const MapObjectId('polygon'),
+              point: const Point(latitude: 47.243347, longitude: 38.702288),
               icon: PlacemarkIcon.single(PlacemarkIconStyle(
                   zIndex: 4,
                   image: BitmapDescriptor.fromAssetImage(
