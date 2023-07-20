@@ -8,6 +8,8 @@ import 'package:birthday_app/utils/images.dart';
 import 'package:birthday_app/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
@@ -80,10 +82,13 @@ class MyHomePage extends StatelessWidget {
                   SizedBox(
                     height: 4.h,
                   ),
+
                   Text(
                     'Адрес',
                     style: Styles.mainStyle,
-                  )
+                  ),
+                  const UrlLaunher(),
+                  //
                 ],
               ),
             ),
@@ -91,6 +96,36 @@ class MyHomePage extends StatelessWidget {
         ),
       ),
     ));
+  }
+}
+
+final Uri _url = Uri.parse(
+    'https://yandex.ru/maps/org/raduga/166766862140/?ll=38.785917%2C47.263567&z=10.75');
+
+class UrlLaunher extends StatefulWidget {
+  const UrlLaunher({super.key});
+
+  @override
+  State<UrlLaunher> createState() => _UrlLaunherState();
+}
+
+class _UrlLaunherState extends State<UrlLaunher> {
+  @override
+  Widget build(BuildContext context) {
+    final Uri toLaunch =
+        Uri(scheme: 'https', host: 't.me', path: 'assistantEvernow');
+    return TextButton(
+        onPressed: () => setState(() => _launchInBrowser(_url)),
+        child: Text('Эопа'));
+  }
+
+  Future<void> _launchInBrowser(Uri url) async {
+    if (!await launchUrl(
+      url,
+      mode: LaunchMode.externalApplication,
+    )) {
+      throw 'Could not launch $url';
+    }
   }
 }
 
