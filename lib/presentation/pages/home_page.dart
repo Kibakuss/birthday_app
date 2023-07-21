@@ -8,8 +8,6 @@ import 'package:birthday_app/utils/images.dart';
 import 'package:birthday_app/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
@@ -79,15 +77,7 @@ class MyHomePage extends StatelessWidget {
                     height: 16.h,
                   ),
                   const MapWindow(),
-                  SizedBox(
-                    height: 4.h,
-                  ),
 
-                  Text(
-                    'Адрес',
-                    style: Styles.mainStyle,
-                  ),
-                  const UrlLaunher(),
                   //
                 ],
               ),
@@ -96,36 +86,6 @@ class MyHomePage extends StatelessWidget {
         ),
       ),
     ));
-  }
-}
-
-final Uri _url = Uri.parse(
-    'https://yandex.ru/maps/org/raduga/166766862140/?ll=38.785917%2C47.263567&z=10.75');
-
-class UrlLaunher extends StatefulWidget {
-  const UrlLaunher({super.key});
-
-  @override
-  State<UrlLaunher> createState() => _UrlLaunherState();
-}
-
-class _UrlLaunherState extends State<UrlLaunher> {
-  @override
-  Widget build(BuildContext context) {
-    final Uri toLaunch =
-        Uri(scheme: 'https', host: 't.me', path: 'assistantEvernow');
-    return TextButton(
-        onPressed: () => setState(() => _launchInBrowser(_url)),
-        child: Text('Эопа'));
-  }
-
-  Future<void> _launchInBrowser(Uri url) async {
-    if (!await launchUrl(
-      url,
-      mode: LaunchMode.externalApplication,
-    )) {
-      throw 'Could not launch $url';
-    }
   }
 }
 
@@ -183,7 +143,7 @@ class _PageViewImagesState extends State<PageViewImages> {
                           },
                           child: AnimatedContainer(
                             duration: const Duration(milliseconds: 300),
-                            height: 5.h,
+                            height: 5.w,
                             width: _activePage == index ? 30.w : 5.w,
                             decoration: BoxDecoration(
                                 color: Colors.white,
@@ -246,13 +206,11 @@ class _MenuListState extends State<MenuList> {
                           topRight: Radius.circular(25.r),
                           bottomLeft: Radius.circular(25.r),
                         ),
-                        child: SizedBox(
+                        child: Image.asset(
+                          item.imageName,
                           width: 140.w,
                           height: 140.w,
-                          child: Image.asset(
-                            item.imageName,
-                            fit: BoxFit.cover,
-                          ),
+                          fit: BoxFit.cover,
                         ),
                       ),
                       Text(
@@ -274,13 +232,16 @@ class _MenuListState extends State<MenuList> {
             });
           },
           child: Text(
-            _expanded ? 'Свернуть \u{25B2}' : 'Развернуть \u{25BC}',
+            //25B2
+            //25BC
+            _expanded ? 'Свернуть \u{25B4}' : 'Развернуть \u{25BE}',
             style: TextStyle(
-                fontFamily: 'Jost',
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w400,
-                decoration: TextDecoration.underline,
-                color: AppColors.titleColor),
+              fontFamily: 'Jost',
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w400,
+              decoration: TextDecoration.underline,
+              color: AppColors.titleColor,
+            ),
           ),
         ),
       ],
@@ -327,13 +288,14 @@ class _GamesListState extends State<GamesList> {
           itemBuilder: (context, index) {
             final item = games[index];
             return ListTile(
+              // minVerticalPadding: 0,
               contentPadding: const EdgeInsets.all(0),
               leading: ClipRRect(
                   borderRadius: BorderRadius.all(Radius.circular(41.r)),
                   child: Image.asset(
                     'assets/images/${item.imageName}',
-                    width: 42.w,
-                    height: 42.w,
+                    width: 42.r,
+                    height: 42.r,
                     fit: BoxFit.cover,
                   )),
               title: Text(
@@ -345,9 +307,10 @@ class _GamesListState extends State<GamesList> {
                 maxLines: 1,
                 style: Styles.descriptionStyle,
               ),
-              trailing: const Icon(
+              trailing: Icon(
                 Icons.keyboard_arrow_right,
                 color: AppColors.subTitleColor,
+                size: 20.r,
               ),
               isThreeLine: false,
             );
