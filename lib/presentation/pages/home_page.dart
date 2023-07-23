@@ -1,5 +1,6 @@
 import 'package:birthday_app/domain/model/game_item.dart';
 import 'package:birthday_app/domain/model/menu_item.dart';
+import 'package:birthday_app/presentation/pages/menu_item.dart';
 import 'package:birthday_app/presentation/widgets/button_widget.dart';
 import 'package:birthday_app/presentation/widgets/map.dart';
 import 'package:birthday_app/presentation/widgets/page_view_image.dart';
@@ -76,7 +77,7 @@ class MyHomePage extends StatelessWidget {
                   SizedBox(
                     height: 16.h,
                   ),
-                  const MapWindow(),
+                  // const MapWindow(),
 
                   //
                 ],
@@ -197,7 +198,13 @@ class _MenuListState extends State<MenuList> {
               itemBuilder: (context, index) {
                 final item = menu[index];
                 return GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => MenuItemScreen(item: item)),
+                    );
+                  },
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -236,6 +243,7 @@ class _MenuListState extends State<MenuList> {
             //25BC
             _expanded ? 'Свернуть \u{25B4}' : 'Развернуть \u{25BE}',
             style: TextStyle(
+              // decorationThickness: 3,
               fontFamily: 'Jost',
               fontSize: 14.sp,
               fontWeight: FontWeight.w400,
