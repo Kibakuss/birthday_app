@@ -1,6 +1,7 @@
 import 'package:birthday_app/domain/model/game_item.dart';
 import 'package:birthday_app/domain/model/menu_item.dart';
 import 'package:birthday_app/presentation/pages/menu_item.dart';
+import 'package:birthday_app/presentation/widgets/button_expanded.dart';
 import 'package:birthday_app/presentation/widgets/button_widget.dart';
 import 'package:birthday_app/presentation/widgets/map.dart';
 import 'package:birthday_app/presentation/widgets/page_view_image.dart';
@@ -77,9 +78,7 @@ class MyHomePage extends StatelessWidget {
                   SizedBox(
                     height: 16.h,
                   ),
-                  // const MapWindow(),
-
-                  //
+                  const MapWindow(),
                 ],
               ),
             ),
@@ -183,74 +182,60 @@ class _MenuListState extends State<MenuList> {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: SizedBox(
-            height: _expanded ? 510.h : 160.h,
-            child: GridView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                mainAxisExtent: 161.h,
-                mainAxisSpacing: 16.h,
-                crossAxisSpacing: 32.w,
-                crossAxisCount: 2,
-                // childAspectRatio: 0.5,
-              ),
-              itemCount: _expanded ? menu.length : 2,
-              itemBuilder: (context, index) {
-                final item = menu[index];
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => MenuItemScreen(item: item)),
-                    );
-                  },
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(25.r),
-                          bottomLeft: Radius.circular(25.r),
-                        ),
-                        child: Image.asset(
-                          item.imageName,
-                          width: 140.w,
-                          height: 140.w,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Text(
-                        item.title,
-                        style: Styles.mainStyle,
-                        maxLines: 1,
-                      )
-                    ],
-                  ),
-                );
-              },
+          child: GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              childAspectRatio: 140 / 154,
+              mainAxisSpacing: 16.h,
+              // crossAxisSpacing: 32.w,
+              crossAxisCount: 2,
+              // childAspectRatio: 0.5,
             ),
+            itemCount: _expanded ? menu.length : 2,
+            itemBuilder: (context, index) {
+              final item = menu[index];
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => MenuItemScreen(item: item)),
+                  );
+                },
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(25.r),
+                        bottomLeft: Radius.circular(25.r),
+                      ),
+                      child: Image.asset(
+                        item.imageName,
+                        width: 140.w,
+                        height: 140.w,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Text(
+                      item.title,
+                      style: Styles.mainStyle,
+                      maxLines: 1,
+                    )
+                  ],
+                ),
+              );
+            },
           ),
         ),
-        TextButton(
-          onPressed: () {
+        ButtonExpanded(
+          expanded: _expanded,
+          onTap: () {
             setState(() {
               _expanded = !_expanded;
             });
           },
-          child: Text(
-            //25B2
-            //25BC
-            _expanded ? 'Свернуть \u{25B4}' : 'Развернуть \u{25BE}',
-            style: TextStyle(
-              // decorationThickness: 3,
-              fontFamily: 'Jost',
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w400,
-              decoration: TextDecoration.underline,
-              color: AppColors.titleColor,
-            ),
-          ),
         ),
       ],
     );
@@ -296,7 +281,6 @@ class _GamesListState extends State<GamesList> {
           itemBuilder: (context, index) {
             final item = games[index];
             return ListTile(
-              // minVerticalPadding: 0,
               contentPadding: const EdgeInsets.all(0),
               leading: ClipRRect(
                   borderRadius: BorderRadius.all(Radius.circular(41.r)),
@@ -324,21 +308,13 @@ class _GamesListState extends State<GamesList> {
             );
           },
         ),
-        GestureDetector(
+        ButtonExpanded(
+          expanded: _expandedGames,
           onTap: () {
             setState(() {
               _expandedGames = !_expandedGames;
             });
           },
-          child: Text(
-            _expandedGames ? 'Свернуть \u{25B2}' : 'Развернуть \u{25BC}',
-            style: TextStyle(
-                fontFamily: 'Jost',
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w400,
-                decoration: TextDecoration.underline,
-                color: AppColors.titleColor),
-          ),
         ),
       ],
     );

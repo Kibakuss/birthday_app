@@ -20,22 +20,11 @@ class MenuItemScreen extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: [
-            LogoRotate(item: item),
-            LogoScale(
+            ImageRotate(item: item),
+            TextScale(
               item: item,
             ),
-            Positioned(
-                top: 200,
-                child: Column(
-                  children: [
-                    Container(
-                      color: Colors.red,
-                      width: 100,
-                      height: 100,
-                    )
-                  ],
-                )),
-            AnimatedContainerExample(),
+            const Meme(),
           ],
         ),
       ),
@@ -43,15 +32,15 @@ class MenuItemScreen extends StatelessWidget {
   }
 }
 
-class LogoRotate extends StatefulWidget {
+class ImageRotate extends StatefulWidget {
   final MenuItem item;
-  const LogoRotate({super.key, required this.item});
+  const ImageRotate({super.key, required this.item});
 
   @override
-  State<LogoRotate> createState() => LogoRotateState();
+  State<ImageRotate> createState() => ImageRotateState();
 }
 
-class LogoRotateState extends State<LogoRotate> {
+class ImageRotateState extends State<ImageRotate> {
   double turns = 0.0;
 
   void _changeRotation() {
@@ -61,8 +50,8 @@ class LogoRotateState extends State<LogoRotate> {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      left: 100,
-      top: -50,
+      left: 100.w,
+      top: -50.h,
       child: GestureDetector(
         onTap: _changeRotation,
         child: AnimatedRotation(
@@ -72,8 +61,8 @@ class LogoRotateState extends State<LogoRotate> {
           child: ClipOval(
               child: Image.asset(
             widget.item.imageName,
-            width: 357,
-            height: 264,
+            width: 357.w,
+            height: 264.h,
             fit: BoxFit.cover,
           )),
         ),
@@ -82,15 +71,15 @@ class LogoRotateState extends State<LogoRotate> {
   }
 }
 
-class LogoScale extends StatefulWidget {
+class TextScale extends StatefulWidget {
   final MenuItem item;
-  const LogoScale({super.key, required this.item});
+  const TextScale({super.key, required this.item});
 
   @override
-  State<LogoScale> createState() => LogoScaleState();
+  State<TextScale> createState() => TextScaleState();
 }
 
-class LogoScaleState extends State<LogoScale> {
+class TextScaleState extends State<TextScale> {
   double scale = 1.0;
 
   void _changeScale() {
@@ -100,8 +89,8 @@ class LogoScaleState extends State<LogoScale> {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      left: 16,
-      top: 166,
+      left: 16.w,
+      top: 166.h,
       child: GestureDetector(
         onTap: _changeScale,
         child: AnimatedScale(
@@ -117,15 +106,14 @@ class LogoScaleState extends State<LogoScale> {
   }
 }
 
-class AnimatedContainerExample extends StatefulWidget {
-  const AnimatedContainerExample({super.key});
+class Meme extends StatefulWidget {
+  const Meme({super.key});
 
   @override
-  State<AnimatedContainerExample> createState() =>
-      _AnimatedContainerExampleState();
+  State<Meme> createState() => _MemeState();
 }
 
-class _AnimatedContainerExampleState extends State<AnimatedContainerExample> {
+class _MemeState extends State<Meme> {
   bool selected = false;
 
   @override
@@ -142,8 +130,6 @@ class _AnimatedContainerExampleState extends State<AnimatedContainerExample> {
             width: selected ? 375.w : 50.0,
             height: selected ? 812.h : 100.0,
             color: selected ? Colors.blueAccent : Colors.transparent,
-            // alignment:
-            //     selected ? Alignment.center : AlignmentDirectional.topCenter,
             duration: const Duration(seconds: 3),
             curve: Curves.fastOutSlowIn,
             child: selected
@@ -151,11 +137,7 @@ class _AnimatedContainerExampleState extends State<AnimatedContainerExample> {
                     'assets/images/mem.jpeg',
                     fit: BoxFit.contain,
                   )
-                : Icon(Icons.stop)
-            // : Center(
-            //     child: Container(
-            //         width: 100, height: 20, child: Text('finally'))),
-            ),
+                : const Icon(Icons.stop)),
       ),
     );
   }
