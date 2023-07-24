@@ -21,7 +21,6 @@ class ButtonExpanded extends StatelessWidget {
               fontFamily: 'Jost',
               fontSize: 14.sp,
               fontWeight: FontWeight.w400,
-              // decoration: TextDecoration.underline,
               color: AppColors.titleColor,
             ),
           ),

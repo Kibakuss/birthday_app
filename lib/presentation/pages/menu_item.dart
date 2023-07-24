@@ -23,9 +23,7 @@ class MenuItemScreen extends StatelessWidget {
         child: Stack(
           children: [
             ImageRotate(item: item),
-            TextAnimatedPosition(
-              item: item,
-            ),
+            TextAnimatedPosition(item: item),
             const AnimatedContent(),
             const Meme(),
           ],
@@ -85,7 +83,9 @@ class _AnimatedContentState extends State<AnimatedContent>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late final Animation<AlignmentGeometry> _alignAnimation;
+  late final Animation<AlignmentGeometry> _alignAnimationEgg;
   late final Animation<double> _rotationAnimation;
+  late final Animation<double> _rotationAnimationEgg;
   bool _isAnimating = true;
 
   @override
@@ -105,11 +105,26 @@ class _AnimatedContentState extends State<AnimatedContent>
         curve: Curves.easeInOutCubic,
       ),
     );
+    _alignAnimationEgg = Tween<AlignmentGeometry>(
+      begin: Alignment.centerRight,
+      end: Alignment.centerLeft,
+    ).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.bounceOut,
+      ),
+    );
 
     _rotationAnimation = Tween<double>(begin: 0, end: 2).animate(
       CurvedAnimation(
         parent: _controller,
         curve: Curves.easeInOutCubic,
+      ),
+    );
+    _rotationAnimationEgg = Tween<double>(begin: 3, end: 0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeInOutExpo,
       ),
     );
   }
@@ -133,23 +148,61 @@ class _AnimatedContentState extends State<AnimatedContent>
           _isAnimating = !_isAnimating;
         });
       },
-      child: AlignTransition(
-        alignment: _alignAnimation,
-        child: RotationTransition(
-            turns: _rotationAnimation,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
+      child: Align(
+        alignment: Alignment.center,
+        child: Container(
+          height: 250,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(25.r),
+              color: Colors.lightBlue),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Stack(
               children: [
-                Image.asset('assets/images/fork.png'),
-                SizedBox(
-                  width: 10.w,
+                const Align(
+                  alignment: Alignment.topCenter,
+                  child: Text('TAP ME'),
                 ),
-                Text(
-                  'TAP ME',
-                  style: Styles.descriptionStyle,
-                )
+                AlignTransition(
+                  alignment: _alignAnimation,
+                  child: RotationTransition(
+                      turns: _rotationAnimation,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset('assets/images/fork.png'),
+                          SizedBox(
+                            width: 10.w,
+                          ),
+                          Text(
+                            'Хлеб',
+                            style: Styles.descriptionStyle,
+                          )
+                        ],
+                      )),
+                ),
+                AlignTransition(
+                  alignment: _alignAnimationEgg,
+                  child: RotationTransition(
+                      turns: _rotationAnimationEgg,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset('assets/images/fork.png'),
+                          SizedBox(
+                            width: 10.w,
+                          ),
+                          Text(
+                            'Яйцо',
+                            style: Styles.descriptionStyle,
+                          )
+                        ],
+                      )),
+                ),
               ],
-            )),
+            ),
+          ),
+        ),
       ),
     );
   }
