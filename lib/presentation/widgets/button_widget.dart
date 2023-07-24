@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ButtonWidget extends StatelessWidget {
   final String text;
+
   const ButtonWidget({super.key, required this.text});
 
   @override

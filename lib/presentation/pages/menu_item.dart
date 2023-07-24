@@ -13,6 +13,7 @@ class MenuItemScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           item.title,
           style: Styles.appBarStyle,

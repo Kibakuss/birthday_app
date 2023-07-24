@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class ButtonExpanded extends StatelessWidget {
   final Function() onTap;
   final bool expanded;
+
   const ButtonExpanded(
       {super.key, required this.expanded, required this.onTap});
 
@@ -12,33 +13,29 @@ class ButtonExpanded extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Text.rich(
-        TextSpan(
-          children: [
-            TextSpan(
-              text: expanded ? 'Свернуть ' : 'Развернуть ',
-              style: TextStyle(
-                decorationThickness: 1,
-                fontFamily: 'Jost',
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w400,
-                decoration: TextDecoration.underline,
-                color: AppColors.titleColor,
-              ),
+      child: Stack(
+        children: [
+          Text(
+            expanded ? 'Свернуть ▲' : 'Развернуть ▼',
+            style: TextStyle(
+              fontFamily: 'Jost',
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w400,
+              // decoration: TextDecoration.underline,
+              color: AppColors.titleColor,
             ),
-            TextSpan(
-              text: expanded ? '▲' : '▼',
-              style: TextStyle(
-                decorationThickness: 1,
-                fontFamily: 'Jost',
-                fontSize: 10.sp,
-                fontWeight: FontWeight.w400,
-                decoration: TextDecoration.underline,
-                color: AppColors.titleColor,
-              ),
+          ),
+          Positioned(
+            bottom: 3.w,
+            left: 0,
+            right: 0,
+            child: const Divider(
+              endIndent: 2,
+              height: 1,
+              color: AppColors.titleColor,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -82,7 +82,6 @@ flutter:
     - family: Jost
       fonts:
         - asset: assets/fonts/Jost-Regular.ttf
-        - asset: assets/fonts/Jost-Black.ttf
     - family: Yeseva One
       fonts:
         - asset: assets/fonts/YesevaOne-Regular.ttf

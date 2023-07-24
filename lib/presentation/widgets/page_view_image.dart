@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class PageViewImage extends StatelessWidget {
   final String image;
   final String text;
+
   const PageViewImage({super.key, required this.image, required this.text});
 
   @override

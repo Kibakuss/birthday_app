@@ -6,6 +6,7 @@ import 'package:birthday_app/presentation/widgets/button_widget.dart';
 import 'package:birthday_app/presentation/widgets/map.dart';
 import 'package:birthday_app/presentation/widgets/page_view_image.dart';
 import 'package:birthday_app/utils/colors.dart';
+import 'package:birthday_app/utils/constants.dart';
 import 'package:birthday_app/utils/images.dart';
 import 'package:birthday_app/utils/styles.dart';
 import 'package:flutter/material.dart';
@@ -30,14 +31,14 @@ class MyHomePage extends StatelessWidget {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 16.h,
+                    height: Constants.sizedBoxSmall,
                   ),
                   Text(
                     'Приглашаю своих дорогих друзей отметить мой день рождения в замечательном месте с множеством развлечений, вкусных блюд и хорошим настроением!',
                     style: Styles.mainStyle,
                   ),
                   SizedBox(
-                    height: 16.h,
+                    height: Constants.sizedBoxSmall,
                   ),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -47,18 +48,18 @@ class MyHomePage extends StatelessWidget {
                     ],
                   ),
                   SizedBox(
-                    height: 30.h,
+                    height: Constants.sizedBoxMedium,
                   ),
                   Text(
                     'Меню',
                     style: Styles.headStyle,
                   ),
                   SizedBox(
-                    height: 16.h,
+                    height: Constants.sizedBoxSmall,
                   ),
                   const MenuList(),
                   SizedBox(
-                    height: 30.h,
+                    height: Constants.sizedBoxMedium,
                   ),
                   Text(
                     'Развлечения',
@@ -66,14 +67,14 @@ class MyHomePage extends StatelessWidget {
                   ),
                   const GamesList(),
                   SizedBox(
-                    height: 30.h,
+                    height: Constants.sizedBoxMedium,
                   ),
                   Text(
                     'Место',
                     style: Styles.headStyle,
                   ),
                   SizedBox(
-                    height: 16.h,
+                    height: Constants.sizedBoxSmall,
                   ),
                   const MapWindow(),
                 ],
@@ -102,6 +103,7 @@ class _PageViewImagesState extends State<PageViewImages> {
     const PageViewImage(image: AppImages.menuCanape, text: 'Go go'),
     const PageViewImage(image: AppImages.menuLemonades, text: 'Лимонад')
   ];
+
   final PageController _pageController = PageController(initialPage: 0);
 
   @override
@@ -164,6 +166,8 @@ class MenuList extends StatefulWidget {
 }
 
 class _MenuListState extends State<MenuList> {
+  bool _expanded = true;
+
   final List<MenuItem> menu = [
     MenuItem(imageName: AppImages.menuCanape, title: 'Канапе'),
     MenuItem(imageName: AppImages.menuCheese, title: 'Сырная тарелка'),
@@ -172,7 +176,7 @@ class _MenuListState extends State<MenuList> {
     MenuItem(imageName: AppImages.menuFruits, title: 'Свежие фрукты'),
     MenuItem(imageName: AppImages.menuLemonades, title: 'Авторские лимонады'),
   ];
-  bool _expanded = true;
+
   @override
   Widget build(BuildContext context) {
     return Column(

@@ -19,10 +19,6 @@ class _MapWindowState extends State<MapWindow> {
   final Uri _url = Uri.parse(
       'https://yandex.ru/maps/org/raduga/166766862140/?ll=38.785917%2C47.263567&z=10.75');
 
-  @override
-  void initState() {
-    super.initState();
-  }
 
   Future<void> _launchInBrowser(Uri url) async {
     if (!await launchUrl(

@@ -1,7 +1,5 @@
 PODS:
   - Flutter (1.0.0)
-  - geolocator_apple (1.2.0):
-    - Flutter
   - url_launcher_ios (0.0.1):
     - Flutter
   - yandex_mapkit (0.0.1):
@@ -11,7 +9,6 @@ PODS:
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
-  - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
   - yandex_mapkit (from `.symlinks/plugins/yandex_mapkit/ios`)
 
@@ -22,8 +19,6 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
-  geolocator_apple:
-    :path: ".symlinks/plugins/geolocator_apple/ios"
   url_launcher_ios:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
   yandex_mapkit:
@@ -31,7 +26,6 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  geolocator_apple: cc556e6844d508c95df1e87e3ea6fa4e58c50401
   url_launcher_ios: 08a3dfac5fb39e8759aeb0abbd5d9480f30fc8b4
   yandex_mapkit: 352801c3b9fe72c0010207d9b01f8838a54b1c5a
   YandexMapsMobile: c73c71ec041b215284efbe8a0ebd7cdb77aad8d7
