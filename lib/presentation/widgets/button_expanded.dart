@@ -18,6 +18,7 @@ class ButtonExpanded extends StatelessWidget {
             TextSpan(
               text: expanded ? 'Свернуть ' : 'Развернуть ',
               style: TextStyle(
+                decorationThickness: 1,
                 fontFamily: 'Jost',
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w400,
@@ -28,6 +29,7 @@ class ButtonExpanded extends StatelessWidget {
             TextSpan(
               text: expanded ? '▲' : '▼',
               style: TextStyle(
+                decorationThickness: 1,
                 fontFamily: 'Jost',
                 fontSize: 10.sp,
                 fontWeight: FontWeight.w400,

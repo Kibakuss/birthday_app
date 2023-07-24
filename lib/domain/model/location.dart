@@ -8,8 +8,8 @@ class AppLatLong {
   });
 }
 
-class MoscowLocation extends AppLatLong {
-  const MoscowLocation({
+class TaganrogLocation extends AppLatLong {
+  const TaganrogLocation({
     super.lat = 47.243347,
     super.long = 38.702288,
   });

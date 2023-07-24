@@ -31,6 +31,19 @@ abstract class Styles {
       fontWeight: FontWeight.w400,
       color: AppColors.titleColor);
 
+  static final gameTitleStyle = TextStyle(
+      height: 20.23 / 14,
+      fontFamily: 'Jost',
+      fontSize: 14.sp,
+      fontWeight: FontWeight.w500,
+      color: AppColors.titleColor);
+
+  static final gameDescriptionStyle = TextStyle(
+      height: 20.23 / 14,
+      fontSize: 14.sp,
+      fontWeight: FontWeight.w400,
+      color: AppColors.subTitleColor);
+
   static final descriptionStyle = TextStyle(
       height: 14 / 14,
       fontSize: 14.sp,

@@ -9,21 +9,20 @@ class ButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 156.w,
-      height: 50.h,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.r)),
-          disabledBackgroundColor: AppColors.mainOrange,
-          backgroundColor: AppColors.mainOrange,
-        ),
-        onPressed: () {},
-        child: Text(
-          text,
-          maxLines: 1,
-          style: Styles.buttonStyle,
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+        width: 156.w,
+        height: 50.h,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15.r),
+            color: AppColors.mainOrange),
+        child: Center(
+          child: Text(
+            text,
+            maxLines: 1,
+            style: Styles.buttonStyle,
+          ),
         ),
       ),
     );

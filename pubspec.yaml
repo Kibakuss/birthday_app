@@ -37,7 +37,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_screenutil: ^5.9.0-beta
   yandex_mapkit: ^3.3.3
-  geolocator: ^9.0.2
   url_launcher: ^6.1.12
 
 dev_dependencies:
@@ -84,7 +83,6 @@ flutter:
       fonts:
         - asset: assets/fonts/Jost-Regular.ttf
         - asset: assets/fonts/Jost-Black.ttf
-          style: italic
     - family: Yeseva One
       fonts:
         - asset: assets/fonts/YesevaOne-Regular.ttf

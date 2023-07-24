@@ -1,4 +1,5 @@
 import 'package:birthday_app/domain/model/menu_item.dart';
+import 'package:birthday_app/utils/colors.dart';
 import 'package:birthday_app/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,9 +22,10 @@ class MenuItemScreen extends StatelessWidget {
         child: Stack(
           children: [
             ImageRotate(item: item),
-            TextScale(
+            TextAnimatedPosition(
               item: item,
             ),
+            const AnimatedContent(),
             const Meme(),
           ],
         ),
@@ -71,38 +73,122 @@ class ImageRotateState extends State<ImageRotate> {
   }
 }
 
-class TextScale extends StatefulWidget {
-  final MenuItem item;
-  const TextScale({super.key, required this.item});
+class AnimatedContent extends StatefulWidget {
+  const AnimatedContent({Key? key}) : super(key: key);
 
   @override
-  State<TextScale> createState() => TextScaleState();
+  State<AnimatedContent> createState() => _AnimatedContentState();
 }
 
-class TextScaleState extends State<TextScale> {
-  double scale = 1.0;
+class _AnimatedContentState extends State<AnimatedContent>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late final Animation<AlignmentGeometry> _alignAnimation;
+  late final Animation<double> _rotationAnimation;
+  bool _isAnimating = true;
 
-  void _changeScale() {
-    setState(() => scale = scale == 1.0 ? 3.0 : 1.0);
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 1500),
+      vsync: this,
+    )..repeat(reverse: true);
+
+    _alignAnimation = Tween<AlignmentGeometry>(
+      begin: Alignment.centerLeft,
+      end: Alignment.centerRight,
+    ).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeInOutCubic,
+      ),
+    );
+
+    _rotationAnimation = Tween<double>(begin: 0, end: 2).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeInOutCubic,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      left: 16.w,
-      top: 166.h,
-      child: GestureDetector(
-        onTap: _changeScale,
-        child: AnimatedScale(
-          scale: scale,
-          duration: const Duration(seconds: 2),
-          child: Text(
-            widget.item.title,
-            style: Styles.headStyle,
-          ),
-        ),
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          if (_isAnimating) {
+            _controller.stop();
+          } else {
+            _controller.repeat(reverse: true);
+          }
+          _isAnimating = !_isAnimating;
+        });
+      },
+      child: AlignTransition(
+        alignment: _alignAnimation,
+        child: RotationTransition(
+            turns: _rotationAnimation,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.asset('assets/images/fork.png'),
+                SizedBox(
+                  width: 10.w,
+                ),
+                Text(
+                  'TAP ME',
+                  style: Styles.descriptionStyle,
+                )
+              ],
+            )),
       ),
     );
+  }
+}
+
+class TextAnimatedPosition extends StatefulWidget {
+  final MenuItem item;
+  const TextAnimatedPosition({super.key, required this.item});
+
+  @override
+  State<TextAnimatedPosition> createState() => TextAnimatedPositionState();
+}
+
+class TextAnimatedPositionState extends State<TextAnimatedPosition> {
+  bool selected = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedPositioned(
+        width: selected ? 59.w : 100.w,
+        top: selected ? 50.h : 166.h,
+        left: selected ? 32.w : 16.w,
+        duration: const Duration(seconds: 2),
+        curve: Curves.fastOutSlowIn,
+        child: GestureDetector(
+          onTap: () {
+            setState(() {
+              selected = !selected;
+            });
+          },
+          child: AnimatedAlign(
+            alignment: selected ? Alignment.topRight : Alignment.bottomLeft,
+            duration: const Duration(seconds: 1),
+            curve: Curves.fastOutSlowIn,
+            child: Text(
+              widget.item.title,
+              style: Styles.headStyle,
+            ),
+          ),
+        ));
   }
 }
 
@@ -125,11 +211,11 @@ class _MemeState extends State<Meme> {
         });
       },
       child: Align(
-        alignment: Alignment.bottomCenter,
+        alignment: Alignment.bottomRight,
         child: AnimatedContainer(
             width: selected ? 375.w : 50.0,
             height: selected ? 812.h : 100.0,
-            color: selected ? Colors.blueAccent : Colors.transparent,
+            color: selected ? AppColors.mainOrange : Colors.transparent,
             duration: const Duration(seconds: 3),
             curve: Curves.fastOutSlowIn,
             child: selected
@@ -137,7 +223,11 @@ class _MemeState extends State<Meme> {
                     'assets/images/mem.jpeg',
                     fit: BoxFit.contain,
                   )
-                : const Icon(Icons.stop)),
+                : Icon(
+                    Icons.dnd_forwardslash,
+                    color: Colors.red,
+                    size: 40.r,
+                  )),
       ),
     );
   }

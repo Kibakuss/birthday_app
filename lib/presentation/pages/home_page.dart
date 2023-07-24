@@ -66,9 +66,6 @@ class MyHomePage extends StatelessWidget {
                   ),
                   const GamesList(),
                   SizedBox(
-                    height: 16.h,
-                  ),
-                  SizedBox(
                     height: 30.h,
                   ),
                   Text(
@@ -188,9 +185,7 @@ class _MenuListState extends State<MenuList> {
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               childAspectRatio: 140 / 154,
               mainAxisSpacing: 16.h,
-              // crossAxisSpacing: 32.w,
               crossAxisCount: 2,
-              // childAspectRatio: 0.5,
             ),
             itemCount: _expanded ? menu.length : 2,
             itemBuilder: (context, index) {
@@ -281,6 +276,7 @@ class _GamesListState extends State<GamesList> {
           itemBuilder: (context, index) {
             final item = games[index];
             return ListTile(
+              horizontalTitleGap: 12.w,
               contentPadding: const EdgeInsets.all(0),
               leading: ClipRRect(
                   borderRadius: BorderRadius.all(Radius.circular(41.r)),
@@ -292,12 +288,12 @@ class _GamesListState extends State<GamesList> {
                   )),
               title: Text(
                 item.title,
-                style: Styles.mainStyle,
+                style: Styles.gameTitleStyle,
               ),
               subtitle: Text(
                 item.description,
                 maxLines: 1,
-                style: Styles.descriptionStyle,
+                style: Styles.gameDescriptionStyle,
               ),
               trailing: Icon(
                 Icons.keyboard_arrow_right,
