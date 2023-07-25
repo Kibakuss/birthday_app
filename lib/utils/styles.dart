@@ -10,6 +10,20 @@ abstract class Styles {
       fontWeight: FontWeight.w400,
       color: AppColors.black);
 
+  static final labelTextField = TextStyle(
+      height: 16 / 16,
+      fontFamily: 'Jost',
+      fontSize: 16.sp,
+      fontWeight: FontWeight.w400,
+      color: AppColors.subTitleColor);
+
+  static final textField = TextStyle(
+      height: 16 / 16,
+      fontFamily: 'Jost',
+      fontSize: 16.sp,
+      fontWeight: FontWeight.w500,
+      color: AppColors.titleColor);
+
   static final appBarStyle = TextStyle(
       height: 20 / 20,
       fontFamily: 'Jost',

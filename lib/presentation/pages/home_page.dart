@@ -1,9 +1,9 @@
 import 'package:birthday_app/domain/model/game_item.dart';
 import 'package:birthday_app/domain/model/menu_item.dart';
+import 'package:birthday_app/presentation/pages/guests_list.dart';
 import 'package:birthday_app/presentation/pages/menu_item.dart';
 import 'package:birthday_app/presentation/widgets/button_expanded.dart';
 import 'package:birthday_app/presentation/widgets/button_widget.dart';
-import 'package:birthday_app/presentation/widgets/map.dart';
 import 'package:birthday_app/presentation/widgets/page_view_image.dart';
 import 'package:birthday_app/utils/colors.dart';
 import 'package:birthday_app/utils/constants.dart';
@@ -40,11 +40,24 @@ class MyHomePage extends StatelessWidget {
                   SizedBox(
                     height: Constants.sizedBoxSmall,
                   ),
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      ButtonWidget(text: 'Список гостей'),
-                      ButtonWidget(text: 'Вишлист'),
+                      ButtonWidget(
+                        color: AppColors.mainOrange,
+                        text: 'Список гостей',
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const GuestListScreen()),
+                          );
+                        },
+                      ),
+                      const ButtonWidget(
+                        text: 'Вишлист',
+                        color: AppColors.mainOrange,
+                      ),
                     ],
                   ),
                   SizedBox(
@@ -76,7 +89,7 @@ class MyHomePage extends StatelessWidget {
                   SizedBox(
                     height: Constants.sizedBoxSmall,
                   ),
-                  const MapWindow(),
+                  // const MapWindow(),
                 ],
               ),
             ),
