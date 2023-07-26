@@ -1,5 +1,6 @@
 import 'package:birthday_app/core/presentation/widgets/button_expanded.dart';
 import 'package:birthday_app/core/presentation/widgets/button_widget.dart';
+import 'package:birthday_app/core/presentation/widgets/map.dart';
 import 'package:birthday_app/core/presentation/widgets/page_view_image.dart';
 import 'package:birthday_app/core/utils/colors.dart';
 import 'package:birthday_app/core/utils/constants.dart';
@@ -89,7 +90,7 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(
                     height: Constants.sizedBoxSmall,
                   ),
-                  // const MapWindow(),
+                  const MapWindow(),
                 ],
               ),
             ),
@@ -181,13 +182,13 @@ class MenuList extends StatefulWidget {
 class _MenuListState extends State<MenuList> {
   bool _expanded = true;
 
-  final List<MenuItem> menu = [
-    MenuItem(imageName: AppImages.menuCanape, title: 'Канапе'),
-    MenuItem(imageName: AppImages.menuCheese, title: 'Сырная тарелка'),
-    MenuItem(imageName: AppImages.menuMeat, title: 'Шашлык на мангале'),
-    MenuItem(imageName: AppImages.menuSeafood, title: 'Морепродукты'),
-    MenuItem(imageName: AppImages.menuFruits, title: 'Свежие фрукты'),
-    MenuItem(imageName: AppImages.menuLemonades, title: 'Авторские лимонады'),
+  final List<Dish> menu = [
+    const Dish(imageName: AppImages.menuCanape, title: 'Канапе'),
+    const Dish(imageName: AppImages.menuCheese, title: 'Сырная тарелка'),
+    const Dish(imageName: AppImages.menuMeat, title: 'Шашлык на мангале'),
+    const Dish(imageName: AppImages.menuSeafood, title: 'Морепродукты'),
+    const Dish(imageName: AppImages.menuFruits, title: 'Свежие фрукты'),
+    const Dish(imageName: AppImages.menuLemonades, title: 'Авторские лимонады'),
   ];
 
   @override
@@ -212,7 +213,7 @@ class _MenuListState extends State<MenuList> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => MenuItemScreen(item: item)),
+                        builder: (context) => MenuItemScreen(dishItem: item)),
                   );
                 },
                 child: Column(
@@ -264,20 +265,20 @@ class GamesList extends StatefulWidget {
 class _GamesListState extends State<GamesList> {
   bool _expandedGames = true;
 
-  final List<GameItem> games = [
-    GameItem(
+  final List<Game> games = [
+    const Game(
         imageName: 'table_games.png',
         title: 'Настольные игры',
         description: 'Мафия, уно, домино, экивоки и другие'),
-    GameItem(
+    const Game(
         imageName: 'pool.png',
         title: 'Бассейн',
         description: 'Два бассейна с подогревом'),
-    GameItem(
+    const Game(
         imageName: '2.png',
         title: 'Баня',
         description: 'Русская баня на дровах'),
-    GameItem(
+    const Game(
         imageName: 'pool.png',
         title: 'Бильярд',
         description: 'Бильярдный стол в отлеьной команте'),

@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MenuItemScreen extends StatelessWidget {
-  final MenuItem item;
+  final Dish dishItem;
 
-  const MenuItemScreen({super.key, required this.item});
+  const MenuItemScreen({super.key, required this.dishItem});
 
   @override
   Widget build(BuildContext context) {
@@ -16,15 +16,15 @@ class MenuItemScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          item.title,
+          dishItem.title,
           style: Styles.appBarStyle,
         ),
       ),
       body: SafeArea(
         child: Stack(
           children: [
-            ImageRotate(item: item),
-            TextAnimatedPosition(item: item),
+            ImageRotate(item: dishItem),
+            TextAnimatedPosition(item: dishItem),
             const AnimatedContent(),
             const Meme(),
           ],
@@ -35,7 +35,7 @@ class MenuItemScreen extends StatelessWidget {
 }
 
 class ImageRotate extends StatefulWidget {
-  final MenuItem item;
+  final Dish item;
   const ImageRotate({super.key, required this.item});
 
   @override
@@ -210,7 +210,7 @@ class _AnimatedContentState extends State<AnimatedContent>
 }
 
 class TextAnimatedPosition extends StatefulWidget {
-  final MenuItem item;
+  final Dish item;
   const TextAnimatedPosition({super.key, required this.item});
 
   @override
