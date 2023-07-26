@@ -1,5 +1,4 @@
-import 'package:birthday_app/presentation/app.dart';
-
+import 'package:birthday_app/app.dart';
 import 'package:flutter/material.dart';
 
 void main() {

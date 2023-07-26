@@ -1,7 +1,6 @@
 import 'dart:async';
-
-import 'package:birthday_app/utils/colors.dart';
-import 'package:birthday_app/utils/styles.dart';
+import 'package:birthday_app/core/utils/colors.dart';
+import 'package:birthday_app/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -18,7 +17,6 @@ class _MapWindowState extends State<MapWindow> {
   final mapControllerCompleter = Completer<YandexMapController>();
   final Uri _url = Uri.parse(
       'https://yandex.ru/maps/org/raduga/166766862140/?ll=38.785917%2C47.263567&z=10.75');
-
 
   Future<void> _launchInBrowser(Uri url) async {
     if (!await launchUrl(

@@ -1,19 +1,19 @@
-import 'package:birthday_app/domain/model/game_item.dart';
-import 'package:birthday_app/domain/model/menu_item.dart';
-import 'package:birthday_app/presentation/pages/guests_list.dart';
-import 'package:birthday_app/presentation/pages/menu_item.dart';
-import 'package:birthday_app/presentation/widgets/button_expanded.dart';
-import 'package:birthday_app/presentation/widgets/button_widget.dart';
-import 'package:birthday_app/presentation/widgets/page_view_image.dart';
-import 'package:birthday_app/utils/colors.dart';
-import 'package:birthday_app/utils/constants.dart';
-import 'package:birthday_app/utils/images.dart';
-import 'package:birthday_app/utils/styles.dart';
+import 'package:birthday_app/core/presentation/widgets/button_expanded.dart';
+import 'package:birthday_app/core/presentation/widgets/button_widget.dart';
+import 'package:birthday_app/core/presentation/widgets/page_view_image.dart';
+import 'package:birthday_app/core/utils/colors.dart';
+import 'package:birthday_app/core/utils/constants.dart';
+import 'package:birthday_app/core/utils/images.dart';
+import 'package:birthday_app/core/utils/styles.dart';
+import 'package:birthday_app/features/guests/presentation/guests_screen.dart';
+import 'package:birthday_app/features/home/data/models/dish/dish_model.dart';
+import 'package:birthday_app/features/home/data/models/game/game_model.dart';
+import 'package:birthday_app/features/home/presentation/menu_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
