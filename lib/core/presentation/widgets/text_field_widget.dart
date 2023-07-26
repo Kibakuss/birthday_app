@@ -23,7 +23,6 @@ class TextFieldWidget extends StatelessWidget {
           border: InputBorder.none,
           labelText: labelText,
           suffixIcon: suffixIcon,
-          // hintText: 'Enter a search term',
         ),
       )),
     );
