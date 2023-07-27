@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TextFieldWidget extends StatelessWidget {
+  final String? hintText;
   final String labelText;
   final Widget? suffixIcon;
-  const TextFieldWidget({super.key, this.suffixIcon, required this.labelText});
+  const TextFieldWidget(
+      {super.key, this.suffixIcon, required this.labelText, this.hintText});
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +24,18 @@ class TextFieldWidget extends StatelessWidget {
           contentPadding: EdgeInsets.symmetric(horizontal: 12.w),
           border: InputBorder.none,
           labelText: labelText,
+          hintText: hintText,
           suffixIcon: suffixIcon,
         ),
       )),
     );
   }
 }
+
+// var i = 0;
+// final input = '123456789';
+// final result = '### ## ## ##'.replaceMapped('#', (e) {
+//   final o = input[i];
+//   i++;
+//   return o;
+// });

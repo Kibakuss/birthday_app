@@ -32,7 +32,7 @@ class _GamesListState extends State<GamesList> {
     const Game(
         imageName: 'pool.png',
         title: 'Бильярд',
-        description: 'Бильярдный стол в отлеьной комнате'),
+        description: 'Бильярдный стол в отдельной комнате'),
   ];
   @override
   Widget build(BuildContext context) {

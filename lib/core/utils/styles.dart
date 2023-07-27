@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 abstract class Styles {
   static const String jost = 'Jost';
   static final headStyle = TextStyle(
-      height: 24 / 24.sp,
+      height: 24 / 24,
       fontFamily: 'Yeseva One',
       fontSize: 24.sp,
       fontWeight: FontWeight.w400,
@@ -20,56 +20,63 @@ abstract class Styles {
       color: AppColors.subTitleColor);
 
   static final textField = TextStyle(
-      height: 16 / 16.sp,
+      height: 16 / 16,
       fontFamily: jost,
       fontSize: 16.sp,
       fontWeight: FontWeight.w500,
       color: AppColors.titleColor);
 
   static final appBarStyle = TextStyle(
-      height: 20 / 20.sp,
+      height: 20 / 20,
       fontFamily: jost,
       fontSize: 20.sp,
       fontWeight: FontWeight.w500,
       color: AppColors.black);
 
   static final headImageStyle = TextStyle(
-      height: 24 / 24.sp,
+      height: 24 / 24,
       fontFamily: jost,
       fontSize: 24.sp,
       fontWeight: FontWeight.w700,
       color: AppColors.white);
 
   static final mainStyle = TextStyle(
-      height: 18.55 / 14.sp,
+      height: 18.55 / 14,
       fontFamily: jost,
       fontSize: 14.sp,
       fontWeight: FontWeight.w400,
       color: AppColors.titleColor);
 
+  static final ageStyle = TextStyle(
+      height: 12 / 12,
+      fontFamily: jost,
+      fontSize: 12.sp,
+      fontWeight: FontWeight.w400,
+      color: AppColors.subTitleColor);
+
   static final gameTitleStyle = TextStyle(
-      height: 20.23 / 14.sp,
+      height: 20.23 / 14,
       fontFamily: jost,
       fontSize: 14.sp,
       fontWeight: FontWeight.w500,
       color: AppColors.titleColor);
 
   static final gameDescriptionStyle = TextStyle(
-      height: 20.23 / 14.sp,
+      height: 20.23 / 14,
       fontFamily: jost,
       fontSize: 14.sp,
       fontWeight: FontWeight.w400,
       color: AppColors.subTitleColor);
 
   static final descriptionStyle = TextStyle(
-      height: 14 / 14.sp,
+      height: 14 / 14,
       fontFamily: jost,
       fontSize: 14.sp,
       fontWeight: FontWeight.w400,
       color: AppColors.subTitleColor);
 
   static final buttonStyle = TextStyle(
-      height: 23.12 / 16.sp,
+      height: 23.12 / 16,
       fontFamily: jost,
       fontSize: 16.sp,
       fontWeight: FontWeight.w600,

@@ -87,7 +87,7 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(
                     height: Constants.sizedBoxSmall,
                   ),
-                  const MapWindow(),
+                  // const MapWindow(),
                 ],
               ),
             ),
