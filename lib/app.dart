@@ -1,4 +1,4 @@
-import 'package:birthday_app/features/home/presentation/home_screen.dart';
+import 'package:birthday_app/presentation/pages/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

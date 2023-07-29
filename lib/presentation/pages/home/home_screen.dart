@@ -1,12 +1,11 @@
-import 'package:birthday_app/core/presentation/widgets/button_widget.dart';
-import 'package:birthday_app/core/utils/colors.dart';
-import 'package:birthday_app/core/utils/constants.dart';
-import 'package:birthday_app/core/utils/styles.dart';
-import 'package:birthday_app/features/guests/presentation/guests_screen.dart';
-import 'package:birthday_app/features/home/presentation/widgets/games.dart';
-import 'package:birthday_app/features/home/presentation/widgets/map.dart';
-import 'package:birthday_app/features/home/presentation/widgets/menu.dart';
-import 'package:birthday_app/features/home/presentation/widgets/page_view_image.dart';
+import 'package:birthday_app/presentation/pages/guests/guests_screen.dart';
+import 'package:birthday_app/presentation/pages/home/widgets/games.dart';
+import 'package:birthday_app/presentation/pages/home/widgets/menu.dart';
+import 'package:birthday_app/presentation/pages/home/widgets/page_view_image.dart';
+import 'package:birthday_app/presentation/widgets/button_widget.dart';
+import 'package:birthday_app/utils/colors.dart';
+import 'package:birthday_app/utils/constants.dart';
+import 'package:birthday_app/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

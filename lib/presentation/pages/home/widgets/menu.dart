@@ -1,8 +1,8 @@
-import 'package:birthday_app/core/presentation/widgets/button_expanded.dart';
-import 'package:birthday_app/core/utils/images.dart';
-import 'package:birthday_app/core/utils/styles.dart';
-import 'package:birthday_app/features/home/data/models/dish/dish_model.dart';
-import 'package:birthday_app/features/home/presentation/animation/dish_screen.dart';
+import 'package:birthday_app/domain/models/dish/dish_model.dart';
+import 'package:birthday_app/presentation/pages/home/widgets/animation/dish_screen.dart';
+import 'package:birthday_app/presentation/widgets/button_expanded.dart';
+import 'package:birthday_app/utils/images.dart';
+import 'package:birthday_app/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,6 +1,7 @@
 import 'dart:async';
-import 'package:birthday_app/core/utils/colors.dart';
-import 'package:birthday_app/core/utils/styles.dart';
+
+import 'package:birthday_app/utils/colors.dart';
+import 'package:birthday_app/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';

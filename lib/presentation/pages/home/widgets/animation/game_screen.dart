@@ -1,7 +1,6 @@
-import 'package:birthday_app/core/utils/styles.dart';
-import 'package:birthday_app/features/home/data/models/game/game_model.dart';
+import 'package:birthday_app/domain/models/game/game_model.dart';
+import 'package:birthday_app/utils/styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GameScreen extends StatelessWidget {
   final Game game;
