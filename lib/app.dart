@@ -1,6 +1,8 @@
+import 'package:birthday_app/presentation/blocs/bloc/guest_list_bloc_bloc.dart';
 import 'package:birthday_app/presentation/pages/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const HomeScreen(),
+        home: HomeScreen(),
       ),
     );
   }

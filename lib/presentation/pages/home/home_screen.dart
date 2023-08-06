@@ -1,3 +1,4 @@
+import 'package:birthday_app/presentation/blocs/bloc/guest_list_bloc_bloc.dart';
 import 'package:birthday_app/presentation/pages/guests/guests_screen.dart';
 import 'package:birthday_app/presentation/pages/home/widgets/games.dart';
 import 'package:birthday_app/presentation/pages/home/widgets/menu.dart';
@@ -7,6 +8,7 @@ import 'package:birthday_app/utils/colors.dart';
 import 'package:birthday_app/utils/constants.dart';
 import 'package:birthday_app/utils/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -47,7 +49,10 @@ class HomeScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const GuestListScreen()),
+                                builder: (context) => BlocProvider(
+                                      create: (context) => GuestListBloc(),
+                                      child: const GuestListScreen(),
+                                    )),
                           );
                         },
                       ),
