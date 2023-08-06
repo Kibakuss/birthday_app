@@ -1,25 +1,33 @@
 import 'package:birthday_app/app.dart';
-import 'package:birthday_app/presentation/blocs/bloc/guest_list_bloc_bloc.dart';
+import 'package:birthday_app/domain/repository/guest_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 
-void main() {
+void main() async {
+  // Инициализация Flutter binding
   WidgetsFlutterBinding.ensureInitialized();
-  // configureDependencies();
-  final getIt = GetIt.instance;
-  @InjectableInit()
-  void configureDependencies() => getIt.init();
+
+  // Инициализация Hive
+  await initHive();
+
+  // Конфигурирование DI
   configureDependencies();
-  // GetIt.I.registerSingleton<GuestListBloc>(GuestListBloc());
+
   runApp(const MyApp());
 }
 
-// final getIt = GetIt.instance;
+@module
+abstract class RegisterModule {
+  @lazySingleton
+  GuestRepository get guestRepository;
+}
 
-// @InjectableInit(
-//   initializerName: 'init', // default
-//   preferRelativeImports: true, // default
-//   asExtension: true, // default
-// )
-// void configureDependencies() => getIt.init();
+@InjectableInit()
+void configureDependencies() => GetIt.I();
+
+Future<void> initHive() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(GuestAdapter());
+}

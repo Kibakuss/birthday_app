@@ -51,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                             MaterialPageRoute(
                                 builder: (context) => BlocProvider(
                                       create: (context) => GuestListBloc(),
-                                      child: const GuestListScreen(),
+                                      child: GuestListScreen(),
                                     )),
                           );
                         },

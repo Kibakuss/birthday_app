@@ -20,7 +20,7 @@ mixin _$GuestListEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() loadGuests,
     required TResult Function(Guest guest) addGuest,
-    required TResult Function(int id, Guest guest) updateGuest,
+    required TResult Function(Guest guest) updateGuest,
     required TResult Function(int id) deleteGuest,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$GuestListEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadGuests,
     TResult? Function(Guest guest)? addGuest,
-    TResult? Function(int id, Guest guest)? updateGuest,
+    TResult? Function(Guest guest)? updateGuest,
     TResult? Function(int id)? deleteGuest,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$GuestListEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadGuests,
     TResult Function(Guest guest)? addGuest,
-    TResult Function(int id, Guest guest)? updateGuest,
+    TResult Function(Guest guest)? updateGuest,
     TResult Function(int id)? deleteGuest,
     required TResult orElse(),
   }) =>
@@ -126,7 +126,7 @@ class _$LoadGuests implements LoadGuests {
   TResult when<TResult extends Object?>({
     required TResult Function() loadGuests,
     required TResult Function(Guest guest) addGuest,
-    required TResult Function(int id, Guest guest) updateGuest,
+    required TResult Function(Guest guest) updateGuest,
     required TResult Function(int id) deleteGuest,
   }) {
     return loadGuests();
@@ -137,7 +137,7 @@ class _$LoadGuests implements LoadGuests {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadGuests,
     TResult? Function(Guest guest)? addGuest,
-    TResult? Function(int id, Guest guest)? updateGuest,
+    TResult? Function(Guest guest)? updateGuest,
     TResult? Function(int id)? deleteGuest,
   }) {
     return loadGuests?.call();
@@ -148,7 +148,7 @@ class _$LoadGuests implements LoadGuests {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadGuests,
     TResult Function(Guest guest)? addGuest,
-    TResult Function(int id, Guest guest)? updateGuest,
+    TResult Function(Guest guest)? updateGuest,
     TResult Function(int id)? deleteGuest,
     required TResult orElse(),
   }) {
@@ -275,7 +275,7 @@ class _$AddGuest implements AddGuest {
   TResult when<TResult extends Object?>({
     required TResult Function() loadGuests,
     required TResult Function(Guest guest) addGuest,
-    required TResult Function(int id, Guest guest) updateGuest,
+    required TResult Function(Guest guest) updateGuest,
     required TResult Function(int id) deleteGuest,
   }) {
     return addGuest(guest);
@@ -286,7 +286,7 @@ class _$AddGuest implements AddGuest {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadGuests,
     TResult? Function(Guest guest)? addGuest,
-    TResult? Function(int id, Guest guest)? updateGuest,
+    TResult? Function(Guest guest)? updateGuest,
     TResult? Function(int id)? deleteGuest,
   }) {
     return addGuest?.call(guest);
@@ -297,7 +297,7 @@ class _$AddGuest implements AddGuest {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadGuests,
     TResult Function(Guest guest)? addGuest,
-    TResult Function(int id, Guest guest)? updateGuest,
+    TResult Function(Guest guest)? updateGuest,
     TResult Function(int id)? deleteGuest,
     required TResult orElse(),
   }) {
@@ -360,7 +360,7 @@ abstract class _$$UpdateGuestCopyWith<$Res> {
           _$UpdateGuest value, $Res Function(_$UpdateGuest) then) =
       __$$UpdateGuestCopyWithImpl<$Res>;
   @useResult
-  $Res call({int id, Guest guest});
+  $Res call({Guest guest});
 
   $GuestCopyWith<$Res> get guest;
 }
@@ -376,14 +376,9 @@ class __$$UpdateGuestCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? guest = null,
   }) {
     return _then(_$UpdateGuest(
-      null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
       null == guest
           ? _value.guest
           : guest // ignore: cast_nullable_to_non_nullable
@@ -403,16 +398,14 @@ class __$$UpdateGuestCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UpdateGuest implements UpdateGuest {
-  const _$UpdateGuest(this.id, this.guest);
+  const _$UpdateGuest(this.guest);
 
-  @override
-  final int id;
   @override
   final Guest guest;
 
   @override
   String toString() {
-    return 'GuestListEvent.updateGuest(id: $id, guest: $guest)';
+    return 'GuestListEvent.updateGuest(guest: $guest)';
   }
 
   @override
@@ -420,12 +413,11 @@ class _$UpdateGuest implements UpdateGuest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateGuest &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.guest, guest) || other.guest == guest));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, guest);
+  int get hashCode => Object.hash(runtimeType, guest);
 
   @JsonKey(ignore: true)
   @override
@@ -438,10 +430,10 @@ class _$UpdateGuest implements UpdateGuest {
   TResult when<TResult extends Object?>({
     required TResult Function() loadGuests,
     required TResult Function(Guest guest) addGuest,
-    required TResult Function(int id, Guest guest) updateGuest,
+    required TResult Function(Guest guest) updateGuest,
     required TResult Function(int id) deleteGuest,
   }) {
-    return updateGuest(id, guest);
+    return updateGuest(guest);
   }
 
   @override
@@ -449,10 +441,10 @@ class _$UpdateGuest implements UpdateGuest {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadGuests,
     TResult? Function(Guest guest)? addGuest,
-    TResult? Function(int id, Guest guest)? updateGuest,
+    TResult? Function(Guest guest)? updateGuest,
     TResult? Function(int id)? deleteGuest,
   }) {
-    return updateGuest?.call(id, guest);
+    return updateGuest?.call(guest);
   }
 
   @override
@@ -460,12 +452,12 @@ class _$UpdateGuest implements UpdateGuest {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadGuests,
     TResult Function(Guest guest)? addGuest,
-    TResult Function(int id, Guest guest)? updateGuest,
+    TResult Function(Guest guest)? updateGuest,
     TResult Function(int id)? deleteGuest,
     required TResult orElse(),
   }) {
     if (updateGuest != null) {
-      return updateGuest(id, guest);
+      return updateGuest(guest);
     }
     return orElse();
   }
@@ -509,9 +501,8 @@ class _$UpdateGuest implements UpdateGuest {
 }
 
 abstract class UpdateGuest implements GuestListEvent {
-  const factory UpdateGuest(final int id, final Guest guest) = _$UpdateGuest;
+  const factory UpdateGuest(final Guest guest) = _$UpdateGuest;
 
-  int get id;
   Guest get guest;
   @JsonKey(ignore: true)
   _$$UpdateGuestCopyWith<_$UpdateGuest> get copyWith =>
@@ -584,7 +575,7 @@ class _$DeleteGuest implements DeleteGuest {
   TResult when<TResult extends Object?>({
     required TResult Function() loadGuests,
     required TResult Function(Guest guest) addGuest,
-    required TResult Function(int id, Guest guest) updateGuest,
+    required TResult Function(Guest guest) updateGuest,
     required TResult Function(int id) deleteGuest,
   }) {
     return deleteGuest(id);
@@ -595,7 +586,7 @@ class _$DeleteGuest implements DeleteGuest {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadGuests,
     TResult? Function(Guest guest)? addGuest,
-    TResult? Function(int id, Guest guest)? updateGuest,
+    TResult? Function(Guest guest)? updateGuest,
     TResult? Function(int id)? deleteGuest,
   }) {
     return deleteGuest?.call(id);
@@ -606,7 +597,7 @@ class _$DeleteGuest implements DeleteGuest {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadGuests,
     TResult Function(Guest guest)? addGuest,
-    TResult Function(int id, Guest guest)? updateGuest,
+    TResult Function(Guest guest)? updateGuest,
     TResult Function(int id)? deleteGuest,
     required TResult orElse(),
   }) {
@@ -666,7 +657,7 @@ abstract class DeleteGuest implements GuestListEvent {
 /// @nodoc
 mixin _$GuestListState {
   List<Guest> get guests => throw _privateConstructorUsedError;
-  RequestState get status => throw _privateConstructorUsedError;
+  RequestStatus get status => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GuestListStateCopyWith<GuestListState> get copyWith =>
@@ -679,7 +670,7 @@ abstract class $GuestListStateCopyWith<$Res> {
           GuestListState value, $Res Function(GuestListState) then) =
       _$GuestListStateCopyWithImpl<$Res, GuestListState>;
   @useResult
-  $Res call({List<Guest> guests, RequestState status});
+  $Res call({List<Guest> guests, RequestStatus status});
 }
 
 /// @nodoc
@@ -706,7 +697,7 @@ class _$GuestListStateCopyWithImpl<$Res, $Val extends GuestListState>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as RequestState,
+              as RequestStatus,
     ) as $Val);
   }
 }
@@ -719,7 +710,7 @@ abstract class _$$_GuestListStateCopyWith<$Res>
       __$$_GuestListStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Guest> guests, RequestState status});
+  $Res call({List<Guest> guests, RequestStatus status});
 }
 
 /// @nodoc
@@ -744,7 +735,7 @@ class __$$_GuestListStateCopyWithImpl<$Res>
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as RequestState,
+              as RequestStatus,
     ));
   }
 }
@@ -765,7 +756,7 @@ class _$_GuestListState implements _GuestListState {
   }
 
   @override
-  final RequestState status;
+  final RequestStatus status;
 
   @override
   String toString() {
@@ -795,12 +786,12 @@ class _$_GuestListState implements _GuestListState {
 abstract class _GuestListState implements GuestListState {
   const factory _GuestListState(
       {required final List<Guest> guests,
-      required final RequestState status}) = _$_GuestListState;
+      required final RequestStatus status}) = _$_GuestListState;
 
   @override
   List<Guest> get guests;
   @override
-  RequestState get status;
+  RequestStatus get status;
   @override
   @JsonKey(ignore: true)
   _$$_GuestListStateCopyWith<_$_GuestListState> get copyWith =>

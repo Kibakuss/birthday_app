@@ -179,67 +179,40 @@ import 'package:get_it/get_it.dart';
 // }
 
 class GuestListScreen extends StatelessWidget {
-  const GuestListScreen({super.key});
+  final bloc = GetIt.I.get<GuestListBloc>();
 
   @override
   Widget build(BuildContext context) {
+    bloc.add(LoadGuests());
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Guest List',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        title: Text('Guest List'),
       ),
-      body: BlocConsumer<GuestListBloc, GuestListState>(
-        listener: (context, state) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Guest ${state.guests.last.name} added!'),
-              backgroundColor: Colors.green,
-            ),
-          );
-        },
+      body: BlocBuilder<GuestListBloc, GuestListState>(
+        bloc: bloc,
         builder: (context, state) {
           return ListView.separated(
             itemCount: state.guests.length,
-            separatorBuilder: (context, index) => const Divider(height: 1),
+            separatorBuilder: (context, index) => Divider(),
             itemBuilder: (context, index) {
               final guest = state.guests[index];
-
-              return Dismissible(
-                key: Key(guest.id.toString()),
-                onDismissed: (direction) {
-                  context
-                      .read<GuestListBloc>()
-                      .add(GuestListEvent.deleteGuest(guest));
-                  // BlocProvider.of<GuestListBloc>(context).add(
-                  //   GuestListEvent.deleteGuest(guest),
-                },
-                child: ListTile(
-                  leading: const Icon(Icons.person),
-                  title: Text(
-                    '${guest.name} ${guest.surname}',
-                    style: const TextStyle(fontSize: 20),
-                  ),
-                  subtitle: Text(guest.profession),
-                  trailing: const Icon(Icons.edit),
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return BlocProvider(
-                          create: (context) => GuestListBloc(),
-                          child: EditGuestDialog(
-                            guest: guest,
-                          ),
-                        );
-                      },
-                    );
+              return ListTile(
+                title: Text(guest.name),
+                subtitle: Text(guest.profession),
+                trailing: IconButton(
+                  icon: Icon(Icons.delete),
+                  onPressed: () {
+                    bloc.add(DeleteGuest(guest.id));
                   },
                 ),
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => EditGuestScreen(guest: guest),
+                    ),
+                  );
+                },
               );
             },
           );
@@ -247,29 +220,21 @@ class GuestListScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            builder: (context) {
-              return AddGuestForm();
-            },
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => AddGuestScreen(),
+            ),
           );
         },
-        child: const Icon(Icons.person_add),
+        child: Icon(Icons.add),
       ),
     );
   }
 }
 
-class AddGuestForm extends StatefulWidget {
-  const AddGuestForm({super.key});
+class AddGuestScreen extends StatelessWidget {
+  final bloc = GetIt.I.get<GuestListBloc>();
 
-  @override
-  _AddGuestFormState createState() => _AddGuestFormState();
-}
-
-class _AddGuestFormState extends State<AddGuestForm> {
-  final bloc = GetIt.instance<GuestListBloc>();
-  final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _surnameController = TextEditingController();
   final _ageController = TextEditingController();
@@ -278,207 +243,108 @@ class _AddGuestFormState extends State<AddGuestForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Form(
-        key: _formKey,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Add Guest'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
         child: Column(
           children: [
-            TextFormField(
+            TextField(
               controller: _nameController,
-              decoration: const InputDecoration(labelText: 'Name'),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter name';
-                }
-                return null;
-              },
             ),
-            TextFormField(
+            TextField(
               controller: _surnameController,
-              decoration: const InputDecoration(labelText: 'Surname'),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter surname';
-                }
-                return null;
-              },
             ),
-            TextFormField(
+            TextField(
               controller: _ageController,
-              decoration: const InputDecoration(labelText: 'Age'),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter age';
-                }
-                return null;
-              },
             ),
-            TextFormField(
+            TextField(
               controller: _phoneController,
-              decoration: const InputDecoration(labelText: 'Phone'),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter phone';
-                }
-                return null;
-              },
             ),
-            TextFormField(
+            TextField(
               controller: _professionController,
-              decoration: const InputDecoration(labelText: 'Profession'),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter profession';
-                }
-                return null;
-              },
             ),
-            const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                // bloc.add(AddGuest(
-                //       Guest(
-                //         id: DateTime.now().millisecondsSinceEpoch,
-                //         name: _nameController.text,
-                //         surname: _surnameController.text,
-                //         age: int.parse(_ageController.text),
-                //         phone: _phoneController.text,
-                //         profession: _professionController.text,
-                //       ),
-                //     ));
-                if (_formKey.currentState!.validate()) {
-                  bloc.add(
-                    GuestListEvent.addGuest(
-                      Guest(
-                        id: DateTime.now().millisecondsSinceEpoch,
-                        name: _nameController.text,
-                        surname: _surnameController.text,
-                        age: int.parse(_ageController.text),
-                        phone: _phoneController.text,
-                        profession: _professionController.text,
-                      ),
-                    ),
-                  );
-                  Navigator.pop(context);
-                }
-              },
-              child: const Text('Add Guest'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class EditGuestDialog extends StatefulWidget {
-  final Guest guest;
-
-  const EditGuestDialog({super.key, required this.guest});
-
-  @override
-  _EditGuestDialogState createState() => _EditGuestDialogState();
-}
-
-class _EditGuestDialogState extends State<EditGuestDialog> {
-  final bloc = GetIt.instance<GuestListBloc>();
-  final _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController();
-  final _surnameController = TextEditingController();
-  final _ageController = TextEditingController();
-  final _phoneController = TextEditingController();
-  final _professionController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-
-    // заполнить поля
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      title: const Text('Edit Guest'),
-      content: Form(
-        key: _formKey,
-        child: Column(
-          children: [
-            TextFormField(
-              controller: _nameController,
-              decoration: const InputDecoration(labelText: 'Name'),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter name';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              controller: _surnameController,
-              decoration: const InputDecoration(labelText: 'Surname'),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter surname';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              controller: _ageController,
-              decoration: const InputDecoration(labelText: 'Age'),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter age';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              controller: _phoneController,
-              decoration: const InputDecoration(labelText: 'Phone'),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter phone';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              controller: _professionController,
-              decoration: const InputDecoration(labelText: 'Profession'),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter profession';
-                }
-                return null;
-              },
-            ),
-          ],
-        ),
-      ),
-      actions: [
-        ElevatedButton(
-          onPressed: () {
-            if (_formKey.currentState!.validate()) {
-              bloc.add(
-                GuestListEvent.editGuest(
-                  widget.guest.copyWith(
+                bloc.add(AddGuest(
+                  Guest(
+                    id: DateTime.now().millisecondsSinceEpoch,
                     name: _nameController.text,
                     surname: _surnameController.text,
                     age: int.parse(_ageController.text),
                     phone: _phoneController.text,
                     profession: _professionController.text,
                   ),
-                ),
-              );
-              Navigator.pop(context);
-            }
-          },
-          child: const Text('Save'),
+                ));
+                Navigator.pop(context);
+              },
+              child: Text('Add Guest'),
+            )
+          ],
         ),
-      ],
+      ),
+    );
+  }
+}
+
+class EditGuestScreen extends StatelessWidget {
+  final bloc = GetIt.I.get<GuestListBloc>();
+
+  final Guest guest;
+
+  final _nameController = TextEditingController();
+  final _surnameController = TextEditingController();
+  final _ageController = TextEditingController();
+  final _phoneController = TextEditingController();
+  final _professionController = TextEditingController();
+
+  EditGuestScreen({required this.guest});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Edit Guest'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            TextField(
+              controller: _nameController..text = guest.name,
+            ),
+            TextField(
+              controller: _surnameController..text = guest.surname,
+            ),
+            TextField(
+              controller: _ageController..text = guest.age.toString(),
+            ),
+            TextField(
+              controller: _phoneController..text = guest.phone,
+            ),
+            TextField(
+              controller: _professionController..text = guest.profession,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                bloc.add(UpdateGuest(
+                  guest.copyWith(
+                    name: _nameController.text,
+                    surname: _surnameController.text,
+                    age: int.parse(_ageController.text),
+                    phone: _phoneController.text,
+                    profession: _professionController.text,
+                  ),
+                ));
+                Navigator.pop(context);
+              },
+              child: Text('Save Guest'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -1,25 +1,16 @@
 part of 'guest_list_bloc_bloc.dart';
 
-// @freezed
-// abstract class GuestListState with _$GuestListState {
-//   const factory GuestListState({
-//     required List<Guest> guests,
-//   }) = _GuestListState;
-// }
-
 @freezed
 class GuestListState with _$GuestListState {
   const factory GuestListState({
     required List<Guest> guests,
-    required RequestState status,
+    required RequestStatus status,
   }) = _GuestListState;
 
   factory GuestListState.initial() => GuestListState(
         guests: [],
-        status: RequestState.initial(),
+        status: RequestStatus.initial,
       );
 }
 
-enum RequestState { initial, loading, loaded, error }
-
-// guest_list_bloc.dart
+enum RequestStatus { initial, loading, loaded, error }
