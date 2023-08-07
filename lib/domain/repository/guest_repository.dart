@@ -1,9 +1,5 @@
 import 'package:birthday_app/domain/models/guest/guest_model.dart';
 
-import 'package:get_it/get_it.dart';
-import 'package:injectable/injectable.dart';
-
-@injectable
 class GuestRepository {
   final _guests = <Guest>[];
 

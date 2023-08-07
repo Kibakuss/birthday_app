@@ -234,40 +234,47 @@ import 'package:injectable/injectable.dart';
 //   }
 // }
 
-class GuestListPage extends StatelessWidget {
+class GuestListPage extends StatefulWidget {
+  @override
+  State<GuestListPage> createState() => _GuestListPageState();
+}
+
+class _GuestListPageState extends State<GuestListPage> {
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<GuestListBloc>(context).add(const LoadGuests());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Список гостей'),
       ),
-      body: BlocProvider(
-        create: (_) => GuestListBloc()..add(LoadGuests()),
-        // (context) => getIt<GuestListBloc>()..add(LoadGuests()),
-        child: BlocBuilder<GuestListBloc, GuestListState>(
-          builder: (context, state) {
-            if (state is GuestListLoaded) {
-              print('ща принт UI');
-              print(state.guests);
-              return ListView(children: [
-                for (var guest in state.guests)
-                  Container(
-                      color: Colors.red,
-                      height: 100,
-                      child: ListTile(title: Text(guest.name)))
-              ]);
-              // return _buildGuestList(state.guests);
-            } else if (state is GuestListLoading) {
-              return Center(child: CircularProgressIndicator());
-            } else if (state is GuestListError) {
-              return Center(child: Text('Ошибка загрузки'));
-            }
+      body: BlocBuilder<GuestListBloc, GuestListState>(
+        builder: (context, state) {
+          if (state is GuestListLoaded) {
+            print('ща принт UI');
+            print(state.guests);
+            return ListView(children: [
+              for (var guest in state.guests)
+                Container(
+                    color: Colors.red,
+                    height: 100,
+                    child: ListTile(title: Text(guest.name)))
+            ]);
+            // return _buildGuestList(state.guests);
+          } else if (state is GuestListLoading) {
+            return Center(child: CircularProgressIndicator());
+          } else if (state is GuestListError) {
+            return Center(child: Text('Ошибка загрузки'));
+          }
 
-            return Container(
-              color: Colors.yellow,
-            );
-          },
-        ),
+          return Container(
+            color: Colors.yellow,
+          );
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -330,7 +337,6 @@ class AddGuestForm extends StatefulWidget {
 
 class _AddGuestFormState extends State<AddGuestForm> {
   final _formKey = GlobalKey<FormState>();
-  final bloc = GetIt.I.get<GuestListBloc>();
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
   final _ageController = TextEditingController();
@@ -380,20 +386,38 @@ class _AddGuestFormState extends State<AddGuestForm> {
           ),
           ElevatedButton(
             onPressed: () {
-              // if (_formKey.currentState!.validate()) {
-              bloc.add(AddGuest(
-                Guest(
-                  name: _firstNameController.text,
-                  surname: _lastNameController.text,
-                  age: int.parse(_ageController.text),
-                  profession: _professionController.text,
-                  id: 1,
-                  phone: _professionController.text,
-                ),
-              ));
+              context.read<GuestListBloc>().add(AddGuest(Guest(
+                    name: _firstNameController.text,
+                    surname: _lastNameController.text,
+                    age: int.parse(_ageController.text),
+                    profession: _professionController.text,
+                    id: 1,
+                    phone: _professionController.text,
+                  )));
+              // BlocProvider.of<GuestListBloc>(context).add(AddGuest(Guest(
+              //   name: _firstNameController.text,
+              //   surname: _lastNameController.text,
+              //   age: int.parse(_ageController.text),
+              //   profession: _professionController.text,
+              //   id: 1,
+              //   phone: _professionController.text,
+              // )));
               Navigator.pop(context);
-              bloc.add(LoadGuests());
-              // }
+
+              // if (_formKey.currentState!.validate()) {
+              // bloc.add(AddGuest(
+              //   Guest(
+              //     name: _firstNameController.text,
+              //     surname: _lastNameController.text,
+              //     age: int.parse(_ageController.text),
+              //     profession: _professionController.text,
+              //     id: 1,
+              //     phone: _professionController.text,
+              //   ),
+              // ));
+              // Navigator.pop(context);
+              // bloc.add(LoadGuests());
+              // // }
             },
             child: Text('Добавить'),
           ),

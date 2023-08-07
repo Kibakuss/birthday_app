@@ -2,13 +2,11 @@ import 'package:birthday_app/domain/models/guest/guest_model.dart';
 import 'package:birthday_app/domain/repository/guest_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
 
 part 'guest_list_bloc_event.dart';
 part 'guest_list_bloc_state.dart';
 part 'guest_list_bloc_bloc.freezed.dart';
 
-@injectable
 class GuestListBloc extends Bloc<GuestListEvent, GuestListState> {
   final _repository = GuestRepository();
 
@@ -21,18 +19,23 @@ class GuestListBloc extends Bloc<GuestListEvent, GuestListState> {
     LoadGuests event,
     Emitter<GuestListState> emit,
   ) async {
-    print('GuestListLoading');
-    emit(GuestListLoading());
+    final guests = await _repository.getGuests();
+    print(guests);
+    print('GuestListLoaded');
 
-    try {
-      final guests = await _repository.getGuests();
-      print(guests);
-      print('GuestListLoaded');
-      emit(GuestListLoaded(guests));
-    } catch (_) {
-      print('GuestListError');
-      emit(const GuestListError());
-    }
+    emit(GuestListLoaded(guests));
+    // print('GuestListLoading');
+    // emit(GuestListLoading());
+
+    // try {
+    //   final guests = await _repository.getGuests();
+    //   print(guests);
+    //   print('GuestListLoaded');
+    //   emit(GuestListLoaded(guests));
+    // } catch (_) {
+    //   print('GuestListError');
+    //   emit(const GuestListError());
+    // }
   }
 
   Future<void> _onAddGuest(
@@ -40,8 +43,8 @@ class GuestListBloc extends Bloc<GuestListEvent, GuestListState> {
     Emitter<GuestListState> emit,
   ) async {
     await _repository.addGuest(event.guest);
-    final guests = await _repository.getGuests();
-    emit(GuestListLoaded(guests));
+    final updatedGuests = await _repository.getGuests();
+    emit(GuestListLoaded(updatedGuests));
     // try {
     //   await _repository.addGuest(event.guest);
     //   print('AddGuest');
