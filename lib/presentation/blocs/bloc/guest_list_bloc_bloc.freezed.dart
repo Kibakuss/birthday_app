@@ -20,24 +20,18 @@ mixin _$GuestListEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() loadGuests,
     required TResult Function(Guest guest) addGuest,
-    required TResult Function(Guest guest) updateGuest,
-    required TResult Function(int id) deleteGuest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadGuests,
     TResult? Function(Guest guest)? addGuest,
-    TResult? Function(Guest guest)? updateGuest,
-    TResult? Function(int id)? deleteGuest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadGuests,
     TResult Function(Guest guest)? addGuest,
-    TResult Function(Guest guest)? updateGuest,
-    TResult Function(int id)? deleteGuest,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -45,24 +39,18 @@ mixin _$GuestListEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadGuests value) loadGuests,
     required TResult Function(AddGuest value) addGuest,
-    required TResult Function(UpdateGuest value) updateGuest,
-    required TResult Function(DeleteGuest value) deleteGuest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadGuests value)? loadGuests,
     TResult? Function(AddGuest value)? addGuest,
-    TResult? Function(UpdateGuest value)? updateGuest,
-    TResult? Function(DeleteGuest value)? deleteGuest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadGuests value)? loadGuests,
     TResult Function(AddGuest value)? addGuest,
-    TResult Function(UpdateGuest value)? updateGuest,
-    TResult Function(DeleteGuest value)? deleteGuest,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,8 +114,6 @@ class _$LoadGuests implements LoadGuests {
   TResult when<TResult extends Object?>({
     required TResult Function() loadGuests,
     required TResult Function(Guest guest) addGuest,
-    required TResult Function(Guest guest) updateGuest,
-    required TResult Function(int id) deleteGuest,
   }) {
     return loadGuests();
   }
@@ -137,8 +123,6 @@ class _$LoadGuests implements LoadGuests {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadGuests,
     TResult? Function(Guest guest)? addGuest,
-    TResult? Function(Guest guest)? updateGuest,
-    TResult? Function(int id)? deleteGuest,
   }) {
     return loadGuests?.call();
   }
@@ -148,8 +132,6 @@ class _$LoadGuests implements LoadGuests {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadGuests,
     TResult Function(Guest guest)? addGuest,
-    TResult Function(Guest guest)? updateGuest,
-    TResult Function(int id)? deleteGuest,
     required TResult orElse(),
   }) {
     if (loadGuests != null) {
@@ -163,8 +145,6 @@ class _$LoadGuests implements LoadGuests {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadGuests value) loadGuests,
     required TResult Function(AddGuest value) addGuest,
-    required TResult Function(UpdateGuest value) updateGuest,
-    required TResult Function(DeleteGuest value) deleteGuest,
   }) {
     return loadGuests(this);
   }
@@ -174,8 +154,6 @@ class _$LoadGuests implements LoadGuests {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadGuests value)? loadGuests,
     TResult? Function(AddGuest value)? addGuest,
-    TResult? Function(UpdateGuest value)? updateGuest,
-    TResult? Function(DeleteGuest value)? deleteGuest,
   }) {
     return loadGuests?.call(this);
   }
@@ -185,8 +163,6 @@ class _$LoadGuests implements LoadGuests {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadGuests value)? loadGuests,
     TResult Function(AddGuest value)? addGuest,
-    TResult Function(UpdateGuest value)? updateGuest,
-    TResult Function(DeleteGuest value)? deleteGuest,
     required TResult orElse(),
   }) {
     if (loadGuests != null) {
@@ -275,8 +251,6 @@ class _$AddGuest implements AddGuest {
   TResult when<TResult extends Object?>({
     required TResult Function() loadGuests,
     required TResult Function(Guest guest) addGuest,
-    required TResult Function(Guest guest) updateGuest,
-    required TResult Function(int id) deleteGuest,
   }) {
     return addGuest(guest);
   }
@@ -286,8 +260,6 @@ class _$AddGuest implements AddGuest {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadGuests,
     TResult? Function(Guest guest)? addGuest,
-    TResult? Function(Guest guest)? updateGuest,
-    TResult? Function(int id)? deleteGuest,
   }) {
     return addGuest?.call(guest);
   }
@@ -297,8 +269,6 @@ class _$AddGuest implements AddGuest {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadGuests,
     TResult Function(Guest guest)? addGuest,
-    TResult Function(Guest guest)? updateGuest,
-    TResult Function(int id)? deleteGuest,
     required TResult orElse(),
   }) {
     if (addGuest != null) {
@@ -312,8 +282,6 @@ class _$AddGuest implements AddGuest {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadGuests value) loadGuests,
     required TResult Function(AddGuest value) addGuest,
-    required TResult Function(UpdateGuest value) updateGuest,
-    required TResult Function(DeleteGuest value) deleteGuest,
   }) {
     return addGuest(this);
   }
@@ -323,8 +291,6 @@ class _$AddGuest implements AddGuest {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadGuests value)? loadGuests,
     TResult? Function(AddGuest value)? addGuest,
-    TResult? Function(UpdateGuest value)? updateGuest,
-    TResult? Function(DeleteGuest value)? deleteGuest,
   }) {
     return addGuest?.call(this);
   }
@@ -334,8 +300,6 @@ class _$AddGuest implements AddGuest {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadGuests value)? loadGuests,
     TResult Function(AddGuest value)? addGuest,
-    TResult Function(UpdateGuest value)? updateGuest,
-    TResult Function(DeleteGuest value)? deleteGuest,
     required TResult orElse(),
   }) {
     if (addGuest != null) {
@@ -355,312 +319,56 @@ abstract class AddGuest implements GuestListEvent {
 }
 
 /// @nodoc
-abstract class _$$UpdateGuestCopyWith<$Res> {
-  factory _$$UpdateGuestCopyWith(
-          _$UpdateGuest value, $Res Function(_$UpdateGuest) then) =
-      __$$UpdateGuestCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Guest guest});
-
-  $GuestCopyWith<$Res> get guest;
-}
-
-/// @nodoc
-class __$$UpdateGuestCopyWithImpl<$Res>
-    extends _$GuestListEventCopyWithImpl<$Res, _$UpdateGuest>
-    implements _$$UpdateGuestCopyWith<$Res> {
-  __$$UpdateGuestCopyWithImpl(
-      _$UpdateGuest _value, $Res Function(_$UpdateGuest) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? guest = null,
-  }) {
-    return _then(_$UpdateGuest(
-      null == guest
-          ? _value.guest
-          : guest // ignore: cast_nullable_to_non_nullable
-              as Guest,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $GuestCopyWith<$Res> get guest {
-    return $GuestCopyWith<$Res>(_value.guest, (value) {
-      return _then(_value.copyWith(guest: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$UpdateGuest implements UpdateGuest {
-  const _$UpdateGuest(this.guest);
-
-  @override
-  final Guest guest;
-
-  @override
-  String toString() {
-    return 'GuestListEvent.updateGuest(guest: $guest)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UpdateGuest &&
-            (identical(other.guest, guest) || other.guest == guest));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, guest);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UpdateGuestCopyWith<_$UpdateGuest> get copyWith =>
-      __$$UpdateGuestCopyWithImpl<_$UpdateGuest>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loadGuests,
-    required TResult Function(Guest guest) addGuest,
-    required TResult Function(Guest guest) updateGuest,
-    required TResult Function(int id) deleteGuest,
-  }) {
-    return updateGuest(guest);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadGuests,
-    TResult? Function(Guest guest)? addGuest,
-    TResult? Function(Guest guest)? updateGuest,
-    TResult? Function(int id)? deleteGuest,
-  }) {
-    return updateGuest?.call(guest);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadGuests,
-    TResult Function(Guest guest)? addGuest,
-    TResult Function(Guest guest)? updateGuest,
-    TResult Function(int id)? deleteGuest,
-    required TResult orElse(),
-  }) {
-    if (updateGuest != null) {
-      return updateGuest(guest);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(LoadGuests value) loadGuests,
-    required TResult Function(AddGuest value) addGuest,
-    required TResult Function(UpdateGuest value) updateGuest,
-    required TResult Function(DeleteGuest value) deleteGuest,
-  }) {
-    return updateGuest(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(LoadGuests value)? loadGuests,
-    TResult? Function(AddGuest value)? addGuest,
-    TResult? Function(UpdateGuest value)? updateGuest,
-    TResult? Function(DeleteGuest value)? deleteGuest,
-  }) {
-    return updateGuest?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadGuests value)? loadGuests,
-    TResult Function(AddGuest value)? addGuest,
-    TResult Function(UpdateGuest value)? updateGuest,
-    TResult Function(DeleteGuest value)? deleteGuest,
-    required TResult orElse(),
-  }) {
-    if (updateGuest != null) {
-      return updateGuest(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class UpdateGuest implements GuestListEvent {
-  const factory UpdateGuest(final Guest guest) = _$UpdateGuest;
-
-  Guest get guest;
-  @JsonKey(ignore: true)
-  _$$UpdateGuestCopyWith<_$UpdateGuest> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$DeleteGuestCopyWith<$Res> {
-  factory _$$DeleteGuestCopyWith(
-          _$DeleteGuest value, $Res Function(_$DeleteGuest) then) =
-      __$$DeleteGuestCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int id});
-}
-
-/// @nodoc
-class __$$DeleteGuestCopyWithImpl<$Res>
-    extends _$GuestListEventCopyWithImpl<$Res, _$DeleteGuest>
-    implements _$$DeleteGuestCopyWith<$Res> {
-  __$$DeleteGuestCopyWithImpl(
-      _$DeleteGuest _value, $Res Function(_$DeleteGuest) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-  }) {
-    return _then(_$DeleteGuest(
-      null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$DeleteGuest implements DeleteGuest {
-  const _$DeleteGuest(this.id);
-
-  @override
-  final int id;
-
-  @override
-  String toString() {
-    return 'GuestListEvent.deleteGuest(id: $id)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DeleteGuest &&
-            (identical(other.id, id) || other.id == id));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, id);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DeleteGuestCopyWith<_$DeleteGuest> get copyWith =>
-      __$$DeleteGuestCopyWithImpl<_$DeleteGuest>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loadGuests,
-    required TResult Function(Guest guest) addGuest,
-    required TResult Function(Guest guest) updateGuest,
-    required TResult Function(int id) deleteGuest,
-  }) {
-    return deleteGuest(id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loadGuests,
-    TResult? Function(Guest guest)? addGuest,
-    TResult? Function(Guest guest)? updateGuest,
-    TResult? Function(int id)? deleteGuest,
-  }) {
-    return deleteGuest?.call(id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadGuests,
-    TResult Function(Guest guest)? addGuest,
-    TResult Function(Guest guest)? updateGuest,
-    TResult Function(int id)? deleteGuest,
-    required TResult orElse(),
-  }) {
-    if (deleteGuest != null) {
-      return deleteGuest(id);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(LoadGuests value) loadGuests,
-    required TResult Function(AddGuest value) addGuest,
-    required TResult Function(UpdateGuest value) updateGuest,
-    required TResult Function(DeleteGuest value) deleteGuest,
-  }) {
-    return deleteGuest(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(LoadGuests value)? loadGuests,
-    TResult? Function(AddGuest value)? addGuest,
-    TResult? Function(UpdateGuest value)? updateGuest,
-    TResult? Function(DeleteGuest value)? deleteGuest,
-  }) {
-    return deleteGuest?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(LoadGuests value)? loadGuests,
-    TResult Function(AddGuest value)? addGuest,
-    TResult Function(UpdateGuest value)? updateGuest,
-    TResult Function(DeleteGuest value)? deleteGuest,
-    required TResult orElse(),
-  }) {
-    if (deleteGuest != null) {
-      return deleteGuest(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class DeleteGuest implements GuestListEvent {
-  const factory DeleteGuest(final int id) = _$DeleteGuest;
-
-  int get id;
-  @JsonKey(ignore: true)
-  _$$DeleteGuestCopyWith<_$DeleteGuest> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 mixin _$GuestListState {
-  List<Guest> get guests => throw _privateConstructorUsedError;
-  RequestStatus get status => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $GuestListStateCopyWith<GuestListState> get copyWith =>
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Guest> guests) loaded,
+    required TResult Function() error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<Guest> guests)? loaded,
+    TResult? Function()? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Guest> guests)? loaded,
+    TResult Function()? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GuestListInitial value) initial,
+    required TResult Function(GuestListLoading value) loading,
+    required TResult Function(GuestListLoaded value) loaded,
+    required TResult Function(GuestListError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GuestListInitial value)? initial,
+    TResult? Function(GuestListLoading value)? loading,
+    TResult? Function(GuestListLoaded value)? loaded,
+    TResult? Function(GuestListError value)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GuestListInitial value)? initial,
+    TResult Function(GuestListLoading value)? loading,
+    TResult Function(GuestListLoaded value)? loaded,
+    TResult Function(GuestListError value)? error,
+    required TResult orElse(),
+  }) =>
       throw _privateConstructorUsedError;
 }
 
@@ -669,8 +377,6 @@ abstract class $GuestListStateCopyWith<$Res> {
   factory $GuestListStateCopyWith(
           GuestListState value, $Res Function(GuestListState) then) =
       _$GuestListStateCopyWithImpl<$Res, GuestListState>;
-  @useResult
-  $Res call({List<Guest> guests, RequestStatus status});
 }
 
 /// @nodoc
@@ -682,70 +388,271 @@ class _$GuestListStateCopyWithImpl<$Res, $Val extends GuestListState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
 
-  @pragma('vm:prefer-inline')
+/// @nodoc
+abstract class _$$GuestListInitialCopyWith<$Res> {
+  factory _$$GuestListInitialCopyWith(
+          _$GuestListInitial value, $Res Function(_$GuestListInitial) then) =
+      __$$GuestListInitialCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GuestListInitialCopyWithImpl<$Res>
+    extends _$GuestListStateCopyWithImpl<$Res, _$GuestListInitial>
+    implements _$$GuestListInitialCopyWith<$Res> {
+  __$$GuestListInitialCopyWithImpl(
+      _$GuestListInitial _value, $Res Function(_$GuestListInitial) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GuestListInitial implements GuestListInitial {
+  const _$GuestListInitial();
+
   @override
-  $Res call({
-    Object? guests = null,
-    Object? status = null,
+  String toString() {
+    return 'GuestListState.initial()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GuestListInitial);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Guest> guests) loaded,
+    required TResult Function() error,
   }) {
-    return _then(_value.copyWith(
-      guests: null == guests
-          ? _value.guests
-          : guests // ignore: cast_nullable_to_non_nullable
-              as List<Guest>,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as RequestStatus,
-    ) as $Val);
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<Guest> guests)? loaded,
+    TResult? Function()? error,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Guest> guests)? loaded,
+    TResult Function()? error,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GuestListInitial value) initial,
+    required TResult Function(GuestListLoading value) loading,
+    required TResult Function(GuestListLoaded value) loaded,
+    required TResult Function(GuestListError value) error,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GuestListInitial value)? initial,
+    TResult? Function(GuestListLoading value)? loading,
+    TResult? Function(GuestListLoaded value)? loaded,
+    TResult? Function(GuestListError value)? error,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GuestListInitial value)? initial,
+    TResult Function(GuestListLoading value)? loading,
+    TResult Function(GuestListLoaded value)? loaded,
+    TResult Function(GuestListError value)? error,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
   }
 }
 
-/// @nodoc
-abstract class _$$_GuestListStateCopyWith<$Res>
-    implements $GuestListStateCopyWith<$Res> {
-  factory _$$_GuestListStateCopyWith(
-          _$_GuestListState value, $Res Function(_$_GuestListState) then) =
-      __$$_GuestListStateCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({List<Guest> guests, RequestStatus status});
+abstract class GuestListInitial implements GuestListState {
+  const factory GuestListInitial() = _$GuestListInitial;
 }
 
 /// @nodoc
-class __$$_GuestListStateCopyWithImpl<$Res>
-    extends _$GuestListStateCopyWithImpl<$Res, _$_GuestListState>
-    implements _$$_GuestListStateCopyWith<$Res> {
-  __$$_GuestListStateCopyWithImpl(
-      _$_GuestListState _value, $Res Function(_$_GuestListState) _then)
+abstract class _$$GuestListLoadingCopyWith<$Res> {
+  factory _$$GuestListLoadingCopyWith(
+          _$GuestListLoading value, $Res Function(_$GuestListLoading) then) =
+      __$$GuestListLoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GuestListLoadingCopyWithImpl<$Res>
+    extends _$GuestListStateCopyWithImpl<$Res, _$GuestListLoading>
+    implements _$$GuestListLoadingCopyWith<$Res> {
+  __$$GuestListLoadingCopyWithImpl(
+      _$GuestListLoading _value, $Res Function(_$GuestListLoading) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GuestListLoading implements GuestListLoading {
+  const _$GuestListLoading();
+
+  @override
+  String toString() {
+    return 'GuestListState.loading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GuestListLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Guest> guests) loaded,
+    required TResult Function() error,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<Guest> guests)? loaded,
+    TResult? Function()? error,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Guest> guests)? loaded,
+    TResult Function()? error,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GuestListInitial value) initial,
+    required TResult Function(GuestListLoading value) loading,
+    required TResult Function(GuestListLoaded value) loaded,
+    required TResult Function(GuestListError value) error,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GuestListInitial value)? initial,
+    TResult? Function(GuestListLoading value)? loading,
+    TResult? Function(GuestListLoaded value)? loaded,
+    TResult? Function(GuestListError value)? error,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GuestListInitial value)? initial,
+    TResult Function(GuestListLoading value)? loading,
+    TResult Function(GuestListLoaded value)? loaded,
+    TResult Function(GuestListError value)? error,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GuestListLoading implements GuestListState {
+  const factory GuestListLoading() = _$GuestListLoading;
+}
+
+/// @nodoc
+abstract class _$$GuestListLoadedCopyWith<$Res> {
+  factory _$$GuestListLoadedCopyWith(
+          _$GuestListLoaded value, $Res Function(_$GuestListLoaded) then) =
+      __$$GuestListLoadedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Guest> guests});
+}
+
+/// @nodoc
+class __$$GuestListLoadedCopyWithImpl<$Res>
+    extends _$GuestListStateCopyWithImpl<$Res, _$GuestListLoaded>
+    implements _$$GuestListLoadedCopyWith<$Res> {
+  __$$GuestListLoadedCopyWithImpl(
+      _$GuestListLoaded _value, $Res Function(_$GuestListLoaded) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? guests = null,
-    Object? status = null,
   }) {
-    return _then(_$_GuestListState(
-      guests: null == guests
+    return _then(_$GuestListLoaded(
+      null == guests
           ? _value._guests
           : guests // ignore: cast_nullable_to_non_nullable
               as List<Guest>,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as RequestStatus,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_GuestListState implements _GuestListState {
-  const _$_GuestListState(
-      {required final List<Guest> guests, required this.status})
-      : _guests = guests;
+class _$GuestListLoaded implements GuestListLoaded {
+  const _$GuestListLoaded(final List<Guest> guests) : _guests = guests;
 
   final List<Guest> _guests;
   @override
@@ -756,44 +663,222 @@ class _$_GuestListState implements _GuestListState {
   }
 
   @override
-  final RequestStatus status;
-
-  @override
   String toString() {
-    return 'GuestListState(guests: $guests, status: $status)';
+    return 'GuestListState.loaded(guests: $guests)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GuestListState &&
-            const DeepCollectionEquality().equals(other._guests, _guests) &&
-            (identical(other.status, status) || other.status == status));
+            other is _$GuestListLoaded &&
+            const DeepCollectionEquality().equals(other._guests, _guests));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_guests), status);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_guests));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GuestListStateCopyWith<_$_GuestListState> get copyWith =>
-      __$$_GuestListStateCopyWithImpl<_$_GuestListState>(this, _$identity);
+  _$$GuestListLoadedCopyWith<_$GuestListLoaded> get copyWith =>
+      __$$GuestListLoadedCopyWithImpl<_$GuestListLoaded>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Guest> guests) loaded,
+    required TResult Function() error,
+  }) {
+    return loaded(guests);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<Guest> guests)? loaded,
+    TResult? Function()? error,
+  }) {
+    return loaded?.call(guests);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Guest> guests)? loaded,
+    TResult Function()? error,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(guests);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GuestListInitial value) initial,
+    required TResult Function(GuestListLoading value) loading,
+    required TResult Function(GuestListLoaded value) loaded,
+    required TResult Function(GuestListError value) error,
+  }) {
+    return loaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GuestListInitial value)? initial,
+    TResult? Function(GuestListLoading value)? loading,
+    TResult? Function(GuestListLoaded value)? loaded,
+    TResult? Function(GuestListError value)? error,
+  }) {
+    return loaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GuestListInitial value)? initial,
+    TResult Function(GuestListLoading value)? loading,
+    TResult Function(GuestListLoaded value)? loaded,
+    TResult Function(GuestListError value)? error,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(this);
+    }
+    return orElse();
+  }
 }
 
-abstract class _GuestListState implements GuestListState {
-  const factory _GuestListState(
-      {required final List<Guest> guests,
-      required final RequestStatus status}) = _$_GuestListState;
+abstract class GuestListLoaded implements GuestListState {
+  const factory GuestListLoaded(final List<Guest> guests) = _$GuestListLoaded;
+
+  List<Guest> get guests;
+  @JsonKey(ignore: true)
+  _$$GuestListLoadedCopyWith<_$GuestListLoaded> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GuestListErrorCopyWith<$Res> {
+  factory _$$GuestListErrorCopyWith(
+          _$GuestListError value, $Res Function(_$GuestListError) then) =
+      __$$GuestListErrorCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GuestListErrorCopyWithImpl<$Res>
+    extends _$GuestListStateCopyWithImpl<$Res, _$GuestListError>
+    implements _$$GuestListErrorCopyWith<$Res> {
+  __$$GuestListErrorCopyWithImpl(
+      _$GuestListError _value, $Res Function(_$GuestListError) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GuestListError implements GuestListError {
+  const _$GuestListError();
 
   @override
-  List<Guest> get guests;
+  String toString() {
+    return 'GuestListState.error()';
+  }
+
   @override
-  RequestStatus get status;
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GuestListError);
+  }
+
   @override
-  @JsonKey(ignore: true)
-  _$$_GuestListStateCopyWith<_$_GuestListState> get copyWith =>
-      throw _privateConstructorUsedError;
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Guest> guests) loaded,
+    required TResult Function() error,
+  }) {
+    return error();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<Guest> guests)? loaded,
+    TResult? Function()? error,
+  }) {
+    return error?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Guest> guests)? loaded,
+    TResult Function()? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GuestListInitial value) initial,
+    required TResult Function(GuestListLoading value) loading,
+    required TResult Function(GuestListLoaded value) loaded,
+    required TResult Function(GuestListError value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GuestListInitial value)? initial,
+    TResult? Function(GuestListLoading value)? loading,
+    TResult? Function(GuestListLoaded value)? loaded,
+    TResult? Function(GuestListError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GuestListInitial value)? initial,
+    TResult Function(GuestListLoading value)? loading,
+    TResult Function(GuestListLoaded value)? loaded,
+    TResult Function(GuestListError value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GuestListError implements GuestListState {
+  const factory GuestListError() = _$GuestListError;
 }
