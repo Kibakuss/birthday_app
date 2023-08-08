@@ -11,9 +11,11 @@ part 'guest_list_bloc_bloc.freezed.dart';
 
 @injectable
 class GuestListBloc extends Bloc<GuestListEvent, GuestListState> {
-  final _repository = GetIt.I.get<GuestRepository>();
+  final GuestRepository _repository;
 
-  GuestListBloc(this._repository) : super(GuestListState.initial()) {
+  GuestListBloc()
+      : _repository = GetIt.I.get<GuestRepository>(),
+        super(GuestListState.initial()) {
     on<LoadGuests>(_onLoadGuests);
     on<AddGuest>(_onAddGuest);
     on<UpdateGuest>(_onUpdateGuest);
@@ -21,9 +23,7 @@ class GuestListBloc extends Bloc<GuestListEvent, GuestListState> {
   }
 
   Future<void> _onLoadGuests(
-    LoadGuests event,
-    Emitter<GuestListState> emit,
-  ) async {
+      LoadGuests event, Emitter<GuestListState> emit) async {
     final guests = await _repository.getGuests();
     emit(state.copyWith(guests: guests, status: RequestStatus.loaded));
   }
@@ -45,3 +45,43 @@ class GuestListBloc extends Bloc<GuestListEvent, GuestListState> {
     emit(state.copyWith(guests: state.guests..remove(event.id)));
   }
 }
+// @injectable
+// class GuestListBloc extends Bloc<GuestListEvent, GuestListState> {
+//   GuestRepository _repository;
+
+//   GuestListBloc() : super(GuestListState.initial()) {
+//     on<LoadGuests>(_onLoadGuests);
+//     on<AddGuest>(_onAddGuest);
+//     on<UpdateGuest>(_onUpdateGuest);
+//     on<DeleteGuest>(_onDeleteGuest);
+//   }
+
+//   Future<void> _onLoadGuests(
+//     LoadGuests event,
+//     Emitter<GuestListState> emit,
+//   ) async {
+//     _repository = GetIt.I.get<GuestRepository>();
+//     final guests = await _repository.getGuests();
+//     emit(state.copyWith(guests: guests, status: RequestStatus.loaded));
+//   }
+
+//   Future<void> _onAddGuest(AddGuest event, Emitter<GuestListState> emit) async {
+//     _repository = GetIt.I.get<GuestRepository>();
+//     await _repository.addGuest(event.guest);
+//     emit(state.copyWith(guests: [...state.guests, event.guest]));
+//   }
+
+//   Future<void> _onUpdateGuest(
+//       UpdateGuest event, Emitter<GuestListState> emit) async {
+//     _repository = GetIt.I.get<GuestRepository>();
+//     await _repository.updateGuest(event.guest);
+//     emit(state.copyWith(guests: [...state.guests]));
+//   }
+
+//   Future<void> _onDeleteGuest(
+//       DeleteGuest event, Emitter<GuestListState> emit) async {
+//     _repository = GetIt.I.get<GuestRepository>();
+//     await _repository.deleteGuest(event.id);
+//     emit(state.copyWith(guests: state.guests..remove(event.id)));
+//   }
+// }

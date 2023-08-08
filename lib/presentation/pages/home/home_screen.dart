@@ -47,13 +47,9 @@ class HomeScreen extends StatelessWidget {
                         text: 'Список гостей',
                         onTap: () {
                           Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => BlocProvider(
-                                      create: (context) => GuestListBloc(),
-                                      child: GuestListScreen(),
-                                    )),
-                          );
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => GuestListPage()));
                         },
                       ),
                       const ButtonWidget(

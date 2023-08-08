@@ -178,40 +178,51 @@ import 'package:get_it/get_it.dart';
 //   }
 // }
 
-class GuestListScreen extends StatelessWidget {
-  final bloc = GetIt.I.get<GuestListBloc>();
+class GuestListPage extends StatefulWidget {
+  @override
+  _GuestListPageState createState() => _GuestListPageState();
+}
+
+class _GuestListPageState extends State<GuestListPage> {
+  late final GuestListBloc _bloc;
+
+  @override
+  void initState() {
+    super.initState();
+    _bloc = GetIt.instance<GuestListBloc>();
+    _bloc.add(const GuestListEvent.loadGuests());
+  }
 
   @override
   Widget build(BuildContext context) {
-    bloc.add(LoadGuests());
-
     return Scaffold(
       appBar: AppBar(
-        title: Text('Guest List'),
+        title: const Text('Guest List'),
       ),
       body: BlocBuilder<GuestListBloc, GuestListState>(
-        bloc: bloc,
+        bloc: _bloc,
         builder: (context, state) {
+          if (state.status == GuestListStatus.loading) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
           return ListView.separated(
             itemCount: state.guests.length,
-            separatorBuilder: (context, index) => Divider(),
+            separatorBuilder: (context, index) => const Divider(),
             itemBuilder: (context, index) {
               final guest = state.guests[index];
+
               return ListTile(
                 title: Text(guest.name),
                 subtitle: Text(guest.profession),
                 trailing: IconButton(
-                  icon: Icon(Icons.delete),
+                  icon: const Icon(Icons.edit),
                   onPressed: () {
-                    bloc.add(DeleteGuest(guest.id));
+                    // Показать диалог редактирования гостя
                   },
                 ),
                 onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => EditGuestScreen(guest: guest),
-                    ),
-                  );
+                  // Перейти на страницу профиля гостя
                 },
               );
             },
@@ -219,71 +230,10 @@ class GuestListScreen extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
         onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => AddGuestScreen(),
-            ),
-          );
+          // Показать диалог добавления гостя
         },
-        child: Icon(Icons.add),
-      ),
-    );
-  }
-}
-
-class AddGuestScreen extends StatelessWidget {
-  final bloc = GetIt.I.get<GuestListBloc>();
-
-  final _nameController = TextEditingController();
-  final _surnameController = TextEditingController();
-  final _ageController = TextEditingController();
-  final _phoneController = TextEditingController();
-  final _professionController = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Add Guest'),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: _nameController,
-            ),
-            TextField(
-              controller: _surnameController,
-            ),
-            TextField(
-              controller: _ageController,
-            ),
-            TextField(
-              controller: _phoneController,
-            ),
-            TextField(
-              controller: _professionController,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                bloc.add(AddGuest(
-                  Guest(
-                    id: DateTime.now().millisecondsSinceEpoch,
-                    name: _nameController.text,
-                    surname: _surnameController.text,
-                    age: int.parse(_ageController.text),
-                    phone: _phoneController.text,
-                    profession: _professionController.text,
-                  ),
-                ));
-                Navigator.pop(context);
-              },
-              child: Text('Add Guest'),
-            )
-          ],
-        ),
       ),
     );
   }
